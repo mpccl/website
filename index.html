@@ -1,745 +1,706 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  <meta charset="UTF-8" />
+  <title>MPCCL – Madhya Pradesh Corporate Cricket League</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MPCCL – A merit-based corporate cricket league for working professionals and club players. Trials • Draft • League • Playoffs." />
+  <style>
+    :root {
+      --bg: #050509;
+      --bg-alt: #0b0b12;
+      --card: #11111b;
+      --accent: #f5c94c;
+      --accent-soft: rgba(245, 201, 76, 0.12);
+      --text: #f5f5f7;
+      --muted: #9ca3af;
+      --border: #27272f;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111122 0, #050509 45%, #020206 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(to right, rgba(245,201,76,0.08), transparent);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      border: 1px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 0%, #fcd34d 0, #92400e 50%, #111827 100%);
+      box-shadow: 0 0 18px rgba(245, 201, 76, 0.4);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .logo-text-top {
+      font-size: 0.9rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .logo-text-main {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .nav-badge {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 0.2rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 201, 76, 0.5);
+      background: rgba(24, 24, 37, 0.7);
+      color: var(--accent);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding-top: 3.25rem;
+      padding-bottom: 2.75rem;
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.875rem;
+    }
+
+    .hero-kicker span.pill {
+      padding: 0.15rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 201, 76, 0.45);
+      color: var(--accent);
+      background: rgba(245, 201, 76, 0.08);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 3.1rem);
+      font-weight: 700;
+      line-height: 1.08;
+      margin-bottom: 1rem;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(90deg, #fbbf24, #fde68a);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-sub span {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.7rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.18s ease-out;
+      background: none;
+      color: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #facc15, #eab308);
+      color: #111827;
+      border-color: rgba(250, 204, 21, 0.2);
+      box-shadow: 0 0 24px rgba(250, 204, 21, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 26px rgba(250, 204, 21, 0.6);
+    }
+
+    .btn-outline {
+      border-color: rgba(148, 163, 184, 0.4);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(249, 250, 251, 0.9);
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .hero-meta span strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-card {
+      border-radius: 24px;
+      padding: 1.5rem 1.4rem;
+      background: radial-gradient(circle at top left, #1f2937 0, #020617 55%, #000 100%);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 18px 60px rgba(15, 23, 42, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background: radial-gradient(circle at 20% 0, rgba(250, 204, 21, 0.16), transparent 55%),
+                  radial-gradient(circle at 90% 20%, rgba(59, 130, 246, 0.12), transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      padding: 0.25rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: 0.85rem;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+    }
+
+    .hero-card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+    }
+
+    .hero-card-text {
+      font-size: 0.86rem;
+      color: #e5e7eb;
+      margin-bottom: 1rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-grid-item {
+      border-radius: 16px;
+      padding: 0.7rem 0.8rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 0.8rem;
+    }
+
+    .hero-grid-item span.label {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-grid-item span.value {
+      font-weight: 600;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px dashed rgba(148, 163, 184, 0.4);
+      padding-top: 0.6rem;
+    }
+
+    .hero-card-footer strong {
+      color: var(--accent);
+    }
+
+    .section-heading {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 32rem;
+      margin-bottom: 1.7rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      padding: 1.1rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .card-main {
+      font-size: 0.95rem;
+      margin-bottom: 0.45rem;
+      font-weight: 500;
+    }
+
+    .card-body {
+      font-size: 0.86rem;
+      color: #d4d4d8;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.36);
+      color: var(--muted);
+    }
+
+    .tag-accent {
+      border-color: rgba(245, 201, 76, 0.7);
+      color: var(--accent);
+      background: rgba(245, 201, 76, 0.08);
+    }
+
+    .cta {
+      background: radial-gradient(circle at top, rgba(245, 158, 11, 0.16), transparent 60%);
+      border-radius: 24px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 1.7rem 1.5rem;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: minmax(0, 2.4fr) minmax(0, 2fr);
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .cta-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .cta-text {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+
+    .cta-note {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.4rem 1.25rem 2rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-card {
+        order: -1;
+      }
+      .cta {
+        grid-template-columns: 1fr;
+      }
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-badge {
+        display: none;
+      }
+      .hero-title {
+        font-size: 1.9rem;
+      }
+      .nav-inner {
+        padding-inline: 1rem;
+      }
+      .section {
+        padding-inline: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;MPCCL – Madhya Pradesh Corporate Cricket League&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="description" content="MPCCL – A merit-based corporate cricket league for working professionals and club players. Trials • Draft • League • Playoffs." /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>:root {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--bg: #050509;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--bg-alt: #0b0b12;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--card: #11111b;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--accent: #f5c94c;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--accent-soft: rgba(245, 201, 76, 0.12);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--text: #f5f5f7;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--muted: #9ca3af;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>--border: #27272f;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>* {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-sizing: border-box;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at top, #111122 0, #050509 45%, #020206 100%);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--text);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.6;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>a {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: inherit;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-decoration: none;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.page {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>min-height: 100vh;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>header {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-bottom: 1px solid var(--border);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(to right, rgba(245,201,76,0.08), transparent);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: sticky;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>top: 0;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>z-index: 50;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>backdrop-filter: blur(18px);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.nav-inner {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 1100px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.75rem 1.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.logo-mark {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.55rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.logo-icon {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 32px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 32px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--accent);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at 30% 0%, #fcd34d 0, #92400e 50%, #111827 100%);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 18px rgba(245, 201, 76, 0.4);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.03em;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.logo-text-top {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.14em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.logo-text-main {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.nav-badge {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.16em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.2rem 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(245, 201, 76, 0.5);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(24, 24, 37, 0.7);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>main {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex: 1;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.section {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 1100px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 2.5rem 1.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* HERO */</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 2.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding-top: 3.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding-bottom: 2.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-kicker {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.18em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.875rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-kicker span.pill {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.15rem 0.7rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(245, 201, 76, 0.45);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(245, 201, 76, 0.08);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-title {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: clamp(2.1rem, 4vw, 3.1rem);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>line-height: 1.08;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-highlight {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(90deg, #fbbf24, #fde68a);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>-webkit-background-clip: text;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: transparent;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-sub {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.98rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 32rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-sub span {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #e5e7eb;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 500;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-actions {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.7rem 1.4rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 500;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: inline-flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.45rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid transparent;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transition: all 0.18s ease-out;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: inherit;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-primary {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: linear-gradient(135deg, #facc15, #eab308);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #111827;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-color: rgba(250, 204, 21, 0.2);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 24px rgba(250, 204, 21, 0.4);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-primary:hover {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>transform: translateY(-1px);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 26px rgba(250, 204, 21, 0.6);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-outline {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-color: rgba(148, 163, 184, 0.4);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15, 23, 42, 0.6);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.btn-outline:hover {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-color: rgba(249, 250, 251, 0.9);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #e5e7eb;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15, 23, 42, 0.9);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-meta {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.18em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-meta span strong {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-card {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 24px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 1.5rem 1.4rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at top left, #1f2937 0, #020617 55%, #000 100%);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148, 163, 184, 0.35);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 18px 60px rgba(15, 23, 42, 0.9);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-card::before {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>content: "";</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>inset: -30%;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at 20% 0, rgba(250, 204, 21, 0.16), transparent 55%),</p>
-<p class="p1"><span class="Apple-converted-space">                  </span>radial-gradient(circle at 90% 20%, rgba(59, 130, 246, 0.12), transparent 60%);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>opacity: 0.9;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>pointer-events: none;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-card-inner {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>z-index: 1;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-badge {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.7rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.18em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.25rem 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148, 163, 184, 0.5);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: inline-flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.35rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.85rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15, 23, 42, 0.9);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-badge-dot {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>width: 6px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>height: 6px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: #22c55e;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-card-title {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.05rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.45rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-card-text {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.86rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #e5e7eb;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-grid {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(2, minmax(0, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-grid-item {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 16px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.7rem 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(15, 23, 42, 0.9);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(31, 41, 55, 0.9);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-grid-item span.label {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.72rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.12em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-grid-item span.value {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-card-footer {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.8rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-top: 1px dashed rgba(148, 163, 184, 0.4);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding-top: 0.6rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.hero-card-footer strong {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* GENERIC SECTIONS */</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.section-heading {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.3rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.4rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.section-sub {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 32rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 1.7rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.grid-3 {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(3, minmax(0, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 1.2rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.card {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: var(--card);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 18px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid var(--border);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 1.1rem 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.card-title {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>text-transform: uppercase;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>letter-spacing: 0.12em;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.35rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.card-main {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.95rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.45rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 500;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.card-body {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.86rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #d4d4d8;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.tag-row {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.4rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 0.6rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.tag {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 0.15rem 0.6rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 999px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148, 163, 184, 0.36);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.tag-accent {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-color: rgba(245, 201, 76, 0.7);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: rgba(245, 201, 76, 0.08);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* CTA SECTION */</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.cta {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>background: radial-gradient(circle at top, rgba(245, 158, 11, 0.16), transparent 60%);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-radius: 24px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(148, 163, 184, 0.5);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 1.7rem 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>grid-template-columns: minmax(0, 2.4fr) minmax(0, 2fr);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.cta-title {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 0.3rem;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.cta-text {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.86rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.cta-actions {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.6rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: flex-start;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.cta-note {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: #9ca3af;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>footer {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>border-top: 1px solid var(--border);</p>
-<p class="p1"><span class="Apple-converted-space">      </span>padding: 1.4rem 1.25rem 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>font-size: 0.78rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.footer-inner {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>max-width: 1100px;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.75rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.footer-links {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>gap: 0.85rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.footer-links a {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--muted);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>.footer-links a:hover {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>color: var(--accent);</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>/* RESPONSIVE */</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 880px) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>.hero {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: 1fr;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.hero-card {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>order: -1;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.cta {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: 1fr;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.grid-3 {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>grid-template-columns: 1fr;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>@media (max-width: 600px) {</p>
-<p class="p1"><span class="Apple-converted-space">      </span>.nav-badge {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>display: none;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.hero-title {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>font-size: 1.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.nav-inner {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding-inline: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>.section {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>padding-inline: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1">&lt;div class="page"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;header&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="nav-inner"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="logo-mark"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="logo-icon"&gt;MP&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="logo-text-top"&gt;Corporate Premier Cricket&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="logo-text-main"&gt;MPCCL&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="nav-badge"&gt;Phase–1 • Coming Soon&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/header&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;main&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- HERO --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="section hero"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hero-kicker"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="pill"&gt;Trials • Draft • League&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>8 TEAMS • MP PHASE–1</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1 class="hero-title"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>A new era of&lt;br /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span class="hero-highlight"&gt;corporate cricket&lt;/span&gt; in Madhya Pradesh.</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p class="hero-sub"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>MPCCL is a &lt;span&gt;merit-based corporate cricket league&lt;/span&gt; where</p>
-<p class="p1"><span class="Apple-converted-space">          </span>working professionals and local club players share the same field —</p>
-<p class="p1"><span class="Apple-converted-space">          </span>through structured trials, serious competition, and a clear pathway to bigger stages.</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hero-actions"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- TODO: replace # with your Google Form / Typeform link --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;a href="#coming-soon" class="btn btn-primary"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>🔒 Player registrations opening soon</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- TODO: replace mailto/whatsapp link --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;a href="mailto:league@mpccl.in" class="btn btn-outline"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>📩 Franchise / sponsor enquiry</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hero-meta"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span&gt;&lt;strong&gt;Phase–1:&lt;/strong&gt; 8 teams • MP only&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span&gt;&lt;strong&gt;Next:&lt;/strong&gt; DL–NCR &amp;amp; National Corporate Cup&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;aside class="hero-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hero-card-inner"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="hero-badge"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="hero-badge-dot"&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>2025 • SEASON ONE</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="hero-card-title"&gt;Coming Soon: Trials &amp;amp; Franchise Draft&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;p class="hero-card-text"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Structured trials, graded player pool, and a professional draft system.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>No timepass cricket — only serious competition.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="hero-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hero-grid-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="label"&gt;Trials&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="value"&gt;Corporate &amp;amp; Club • MP&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hero-grid-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="label"&gt;Team Mix&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="value"&gt;Corporate employees + 5 club players&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hero-grid-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="label"&gt;Format&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="value"&gt;League + Playoffs&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hero-grid-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="label"&gt;Vision&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;span class="value"&gt;Pathway to bigger leagues&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="hero-card-footer"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;Phase–1: &lt;strong&gt;MP only&lt;/strong&gt; &amp;nbsp;•&amp;nbsp; Phase–2: &lt;strong&gt;DL–NCR&lt;/strong&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span&gt;National Corporate League planned from Season–3&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/aside&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- ABOUT / WHY SECTION --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="section-heading"&gt;Why MPCCL?&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="section-sub"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>We are building the platform that’s missing today: serious, structured, and merit-based</p>
-<p class="p1"><span class="Apple-converted-space">        </span>corporate cricket. Not just another weekend tournament — but an ecosystem where</p>
-<p class="p1"><span class="Apple-converted-space">        </span>brand value, player opportunity, and competitive quality grow every season.</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="grid-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-title"&gt;FOR CORPORATE EMPLOYEES&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-main"&gt;A real stage, not just box cricket.&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-body"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Structured trials, proper umpires, live scoring, match video, and league tables.</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Employees don’t just “play a match” — they represent a franchise, a city, and a culture.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="tag-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="tag"&gt;Employer branding&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="tag"&gt;Team culture&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="tag tag-accent"&gt;Serious competition&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-title"&gt;FOR CLUB PLAYERS&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-main"&gt;Perform. Get paid. Be noticed.&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-body"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Local club talent that doesn’t get state / national breaks gets a platform to earn match fees,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>build statistics, and be visible to selectors, coaches, and future leagues.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="tag-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="tag tag-accent"&gt;Match fees&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="tag"&gt;Performance records&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="tag"&gt;Pathway to bigger leagues&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-title"&gt;FOR TEAM OWNERS&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-main"&gt;Build a cricket brand that lasts.&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-body"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Own one of the first 8 franchises in MP. Over time, your team builds history, rivalries,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>player stories, and a permanent seat in an expanding national corporate ecosystem.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="tag-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="tag tag-accent"&gt;Franchise bidding&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="tag"&gt;Founding team status&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="tag"&gt;Long-term upside&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- HOW IT WORKS --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="section" id="coming-soon"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;h2 class="section-heading"&gt;How Phase–1 will work&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="section-sub"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>The first season is focused on Madhya Pradesh — 8 teams, honest trials, and a competitive league.</p>
-<p class="p1"><span class="Apple-converted-space">        </span>Details, dates and registration links will be announced here soon.</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/p&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="grid-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-title"&gt;STEP 1&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-main"&gt;Open Trials (Corporate &amp;amp; Club)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-body"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Players register online and attend structured trials. We grade players based on skill,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>fitness and temperament. Only selected players enter the league draft pool.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-title"&gt;STEP 2&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-main"&gt;Draft &amp;amp; Squad Creation&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-body"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>8 franchises build their squads from the graded pool — with a fixed mix of corporate employees</p>
-<p class="p1"><span class="Apple-converted-space">            </span>and 5 local club players per team. Club players are paid match fees by the league.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-title"&gt;STEP 3&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-main"&gt;League, Playoffs &amp;amp; Beyond&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="card-body"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Teams play each other in a league format followed by playoffs. Top performers and teams become</p>
-<p class="p1"><span class="Apple-converted-space">            </span>the core for future inter-region and national corporate competitions.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;!-- CTA --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="cta"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="cta-title"&gt;MP Phase–1 • Player &amp;amp; Franchise Interest&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="cta-text"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>We’re finalising venues, dates, and trial structure. Be the first to know when registrations go live —</p>
-<p class="p1"><span class="Apple-converted-space">            </span>and secure a chance to own or play for one of the founding MPCCL franchises.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cta-actions"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Replace these with your real links later --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;a href="#" class="btn btn-primary"&gt;📋 Join early access list&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;a href="https://wa.me/910000000000" class="btn btn-outline"&gt;💬 Talk to us on WhatsApp&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="cta-note"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>*Links are placeholders for now. You can connect via email / WhatsApp while we prepare the first season launch.</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;footer&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="footer-inner"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div&gt;© &lt;span id="year"&gt;&lt;/span&gt; MPCCL • Madhya Pradesh Corporate Cricket League&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="footer-links"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="mailto:league@mpccl.in"&gt;Email&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="https://instagram.com" target="_blank" rel="noreferrer"&gt;Instagram&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;a href="https://linkedin.com" target="_blank" rel="noreferrer"&gt;LinkedIn&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/footer&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>// Set current year automatically</p>
-<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById("year").textContent = new Date().getFullYear();</p>
-<p class="p1">&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+<div class="page">
+  <header>
+    <div class="nav-inner">
+      <div class="logo-mark">
+        <div class="logo-icon">MP</div>
+        <div>
+          <div class="logo-text-top">Corporate Premier Cricket</div>
+          <div class="logo-text-main">MPCCL</div>
+        </div>
+      </div>
+      <div class="nav-badge">Phase–1 • Coming Soon</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section hero">
+      <div>
+        <div class="hero-kicker">
+          <span class="pill">Trials • Draft • League</span>
+          8 TEAMS • MP PHASE–1
+        </div>
+        <h1 class="hero-title">
+          A new era of<br />
+          <span class="hero-highlight">corporate cricket</span> in Madhya Pradesh.
+        </h1>
+        <p class="hero-sub">
+          MPCCL is a <span>merit-based corporate cricket league</span> where
+          working professionals and local club players share the same field —
+          through structured trials, serious competition, and a clear pathway to bigger stages.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#coming-soon" class="btn btn-primary">
+            🔒 Player registrations opening soon
+          </a>
+          <a href="mailto:league@mpccl.in" class="btn btn-outline">
+            📩 Franchise / sponsor enquiry
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <span><strong>Phase–1:</strong> 8 teams • MP only</span>
+          <span><strong>Next:</strong> DL–NCR &amp; National Corporate Cup</span>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-inner">
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            2025 • SEASON ONE
+          </div>
+          <div class="hero-card-title">Coming Soon: Trials &amp; Franchise Draft</div>
+          <p class="hero-card-text">
+            Structured trials, graded player pool, and a professional draft system.
+            No timepass cricket — only serious competition.
+          </p>
+
+          <div class="hero-grid">
+            <div class="hero-grid-item">
+              <span class="label">Trials</span>
+              <span class="value">Corporate &amp; Club • MP</span>
+            </div>
+            <div class="hero-grid-item">
+              <span class="label">Team Mix</span>
+              <span class="value">Corporate employees + 5 club players</span>
+            </div>
+            <div class="hero-grid-item">
+              <span class="label">Format</span>
+              <span class="value">League + Playoffs</span>
+            </div>
+            <div class="hero-grid-item">
+              <span class="label">Vision</span>
+              <span class="value">Pathway to bigger leagues</span>
+            </div>
+          </div>
+
+          <div class="hero-card-footer">
+            <span>Phase–1: <strong>MP only</strong> &nbsp;•&nbsp; Phase–2: <strong>DL–NCR</strong></span>
+            <span>National Corporate League planned from Season–3</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section">
+      <h2 class="section-heading">Why MPCCL?</h2>
+      <p class="section-sub">
+        We are building the platform that’s missing today: serious, structured, and merit-based
+        corporate cricket. Not just another weekend tournament — but an ecosystem where
+        brand value, player opportunity, and competitive quality grow every season.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title">FOR CORPORATE EMPLOYEES</div>
+          <div class="card-main">A real stage, not just box cricket.</div>
+          <div class="card-body">
+            Structured trials, proper umpires, live scoring, match video, and league tables.
+            Employees don’t just “play a match” — they represent a franchise, a city, and a culture.
+          </div>
+          <div class="tag-row">
+            <span class="tag">Employer branding</span>
+            <span class="tag">Team culture</span>
+            <span class="tag tag-accent">Serious competition</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">FOR CLUB PLAYERS</div>
+          <div class="card-main">Perform. Get paid. Be noticed.</div>
+          <div class="card-body">
+            Local club talent that doesn’t get state / national breaks gets a platform to earn match fees,
+            build statistics, and be visible to selectors, coaches, and future leagues.
+          </div>
+          <div class="tag-row">
+            <span class="tag tag-accent">Match fees</span>
+            <span class="tag">Performance records</span>
+            <span class="tag">Pathway to bigger leagues</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">FOR TEAM OWNERS</div>
+          <div class="card-main">Build a cricket brand that lasts.</div>
+          <div class="card-body">
+            Own one of the first 8 franchises in MP. Over time, your team builds history, rivalries,
+            player stories, and a permanent seat in an expanding national corporate ecosystem.
+          </div>
+          <div class="tag-row">
+            <span class="tag tag-accent">Franchise bidding</span>
+            <span class="tag">Founding team status</span>
+            <span class="tag">Long-term upside</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="coming-soon">
+      <h2 class="section-heading">How Phase–1 will work</h2>
+      <p class="section-sub">
+        The first season is focused on Madhya Pradesh — 8 teams, honest trials, and a competitive league.
+        Details, dates and registration links will be announced here soon.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title">STEP 1</div>
+          <div class="card-main">Open Trials (Corporate &amp; Club)</div>
+          <div class="card-body">
+            Players register online and attend structured trials. We grade players based on skill,
+            fitness and temperament. Only selected players enter the league draft pool.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">STEP 2</div>
+          <div class="card-main">Draft &amp; Squad Creation</div>
+          <div class="card-body">
+            8 franchises build their squads from the graded pool — with a fixed mix of corporate employees
+            and 5 local club players per team. Club players are paid match fees by the league.
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">STEP 3</div>
+          <div class="card-main">League, Playoffs &amp; Beyond</div>
+          <div class="card-body">
+            Teams play each other in a league format followed by playoffs. Top performers and teams become
+            the core for future inter-region and national corporate competitions.
+          </div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <div>
+          <div class="cta-title">MP Phase–1 • Player &amp; Franchise Interest</div>
+          <div class="cta-text">
+            We’re finalising venues, dates, and trial structure. Be the first to know when registrations go live —
+            and secure a chance to own or play for one of the founding MPCCL franchises.
+          </div>
+        </div>
+        <div class="cta-actions">
+          <a href="#" class="btn btn-primary">📋 Join early access list</a>
+          <a href="https://wa.me/910000000000" class="btn btn-outline">💬 Talk to us on WhatsApp</a>
+          <div class="cta-note">
+            *Links are placeholders for now. You can connect via email / WhatsApp while we prepare the first season launch.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> MPCCL • Madhya Pradesh Corporate Cricket League</div>
+      <div class="footer-links">
+        <a href="mailto:league@mpccl.in">Email</a>
+        <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
