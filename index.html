@@ -6,21 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="ICPLT20 – Indian Corporate Premier League T20. A structured T20 ecosystem for corporate cricketers and club players, starting with Phase 1: MP Corporate Edition."
+    content="ICPLT20 – Indian Corporate Premier League T20. Phase 1: MP Corporate T20 with 8 franchises, trials and structured league."
   />
   <style>
     :root {
       --bg: #050816;
-      --bg-alt: #070c1c;
-      --panel: #ffffff;
-      --panel-soft: #f4f6fb;
-      --accent: #ff7a1a;
-      --accent-soft: rgba(255, 122, 26, 0.12);
-      --accent-alt: #1f7cff;
-      --text-dark: #050816;
-      --muted: #6b7280;
-      --border-soft: #e4e7f0;
-      --chip-bg: #0b1220;
+      --bg2: #020617;
+      --card: rgba(15, 23, 42, 0.9);
+      --card-soft: rgba(15, 23, 42, 0.75);
+      --accent: #f97316;
+      --accent-soft: rgba(249, 115, 22, 0.12);
+      --accent-2: #22c55e;
+      --border: rgba(148, 163, 184, 0.4);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
     }
 
     * {
@@ -32,12 +31,12 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, #122148 0, transparent 55%),
-        radial-gradient(circle at bottom right, #09101f 0, transparent 60%),
-        linear-gradient(145deg, #050816, #020617 55%, #050816 100%);
-      color: #f9fafb;
+        radial-gradient(circle at 0% 0%, #1d253f 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, #0b1220 0, transparent 60%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
+      color: var(--text-main);
       -webkit-font-smoothing: antialiased;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     a {
@@ -52,187 +51,142 @@
     }
 
     .shell {
-      max-width: 1120px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 1.75rem 1.25rem 2.5rem;
-    }
-
-    /* TOP STRIP */
-
-    .top-strip {
-      width: 100%;
-      background: linear-gradient(120deg, #ff7a1a, #facc15, #1f7cff);
-      padding: 0.45rem 0;
-    }
-
-    .top-strip-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.76rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #111827;
-      font-weight: 600;
-    }
-
-    .top-strip-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .top-strip-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #16a34a;
-      box-shadow: 0 0 8px rgba(22, 163, 74, 0.9);
+      padding: 1.5rem 1.25rem 2.5rem;
     }
 
     /* HEADER */
 
     header {
-      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-      backdrop-filter: blur(18px);
-      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.92), transparent);
       position: sticky;
       top: 0;
-      z-index: 40;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7));
+      border-bottom: 1px solid rgba(30, 64, 175, 0.7);
     }
 
     .nav {
-      max-width: 1120px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0.7rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 0.75rem;
+      flex-wrap: wrap;
     }
 
     .logo-wrap {
       display: flex;
       align-items: center;
-      gap: 0.65rem;
+      gap: 0.6rem;
     }
 
     .logo-mark {
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       border-radius: 14px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
       background:
-        conic-gradient(from 200deg, #ff7a1a, #facc15, #1f7cff, #ff7a1a);
+        conic-gradient(from 200deg, #f97316, #facc15, #22c55e, #f97316);
       padding: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow:
-        0 0 16px rgba(15, 23, 42, 0.9),
-        0 0 32px rgba(255, 122, 26, 0.35);
+      box-shadow: 0 0 18px rgba(15, 23, 42, 0.9);
     }
 
     .logo-inner {
       width: 100%;
       height: 100%;
       border-radius: 12px;
-      background: radial-gradient(circle at 30% 0%, #0b1120, #020617 70%);
+      background: #020617;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       letter-spacing: 0.18em;
-      font-weight: 700;
-      color: #e5e7eb;
+      text-transform: uppercase;
     }
 
     .logo-text-main {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
     .logo-text-sub {
       font-size: 0.78rem;
-      color: #9ca3af;
+      color: var(--text-muted);
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
     }
 
-    .nav-cta {
+    .nav-right {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      font-size: 0.78rem;
+      gap: 0.5rem;
       flex-wrap: wrap;
-      justify-content: flex-end;
+      font-size: 0.78rem;
     }
 
     .nav-pill {
-      padding: 0.25rem 0.8rem;
+      padding: 0.2rem 0.7rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.65);
-      color: #e5e7eb;
-      text-transform: uppercase;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
       letter-spacing: 0.16em;
+      text-transform: uppercase;
     }
 
     .nav-link {
-      opacity: 0.75;
+      color: var(--accent);
+      font-size: 0.78rem;
     }
 
     .nav-link span {
-      border-bottom: 1px dashed rgba(148, 163, 184, 0.5);
+      border-bottom: 1px dashed rgba(248, 250, 252, 0.5);
     }
 
     /* HERO */
 
     .hero {
-      padding-top: 2.4rem;
-      padding-bottom: 2rem;
+      padding-top: 2.2rem;
+      padding-bottom: 1.8rem;
       display: grid;
-      grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.2fr);
-      gap: 2rem;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 1.7rem;
       align-items: stretch;
     }
 
-    .hero-left-topline {
+    .hero-kicker {
       font-size: 0.8rem;
-      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #9ca3af;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
       display: flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.5rem;
       margin-bottom: 0.7rem;
       flex-wrap: wrap;
     }
 
     .hero-chip {
-      padding: 0.2rem 0.6rem;
+      padding: 0.18rem 0.65rem;
       border-radius: 999px;
       border: 1px solid rgba(148, 163, 184, 0.7);
       background: rgba(15, 23, 42, 0.9);
       font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #e5e7eb;
     }
 
     .hero-title {
-      font-size: clamp(2.2rem, 4.2vw, 3.1rem);
-      line-height: 1.08;
+      font-size: clamp(2.1rem, 4vw, 3rem);
       font-weight: 800;
-      margin-bottom: 0.7rem;
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
     }
 
     .hero-title span {
-      background: linear-gradient(120deg, #f97316, #fb923c, #facc15);
+      background: linear-gradient(120deg, #f97316, #facc15);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -241,48 +195,20 @@
     .hero-sub {
       font-size: 0.98rem;
       color: #e5e7eb;
-      max-width: 32rem;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.1rem;
+      max-width: 30rem;
     }
 
     .hero-sub strong {
-      color: #fbbf24;
+      color: #facc15;
       font-weight: 600;
-    }
-
-    .hero-bullets {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.75rem;
-      margin-bottom: 1.4rem;
-      font-size: 0.8rem;
-    }
-
-    .hero-bullet {
-      border-radius: 0.9rem;
-      padding: 0.55rem 0.6rem;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.85);
-    }
-
-    .hero-bullet span {
-      display: block;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #9ca3af;
-      margin-bottom: 0.1rem;
-    }
-
-    .hero-bullet strong {
-      font-size: 0.84rem;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 0.8rem;
     }
 
     .btn {
@@ -291,30 +217,30 @@
       font-size: 0.9rem;
       font-weight: 500;
       border: 1px solid transparent;
-      cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
-      transition: all 0.18s ease-out;
+      cursor: pointer;
       background: none;
       color: inherit;
+      transition: all 0.18s ease-out;
     }
 
     .btn-primary {
       background: linear-gradient(135deg, #f97316, #facc15);
       color: #111827;
-      box-shadow: 0 0 22px rgba(248, 181, 24, 0.6);
+      box-shadow: 0 0 20px rgba(248, 181, 24, 0.6);
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 0 26px rgba(248, 181, 24, 0.9);
+      box-shadow: 0 0 24px rgba(248, 181, 24, 0.9);
     }
 
     .btn-outline {
-      border-color: rgba(148, 163, 184, 0.7);
-      color: #e5e7eb;
+      border-color: var(--border);
       background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
     }
 
     .btn-outline:hover {
@@ -323,399 +249,337 @@
 
     .hero-note {
       font-size: 0.8rem;
-      color: #9ca3af;
+      color: var(--text-muted);
     }
 
     .hero-note strong {
       color: #e5e7eb;
     }
 
-    /* HERO RIGHT – SCOREBOARD CARD */
+    /* HERO RIGHT – MINI TABLE CARD */
 
-    .hero-right-card {
-      background: var(--panel);
-      color: var(--text-dark);
-      border-radius: 1.4rem;
-      padding: 1.3rem 1.3rem 1.4rem;
-      border: 1px solid var(--border-soft);
-      box-shadow:
-        0 24px 60px rgba(15, 23, 42, 0.85),
-        0 0 0 1px rgba(15, 23, 42, 0.6);
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
+    .hero-card {
+      border-radius: 1.2rem;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.8));
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 1.1rem 1.1rem 1.2rem;
+      box-shadow: 0 22px 60px rgba(15, 23, 42, 0.95);
+      font-size: 0.82rem;
       position: relative;
       overflow: hidden;
     }
 
-    .hero-right-card::before {
+    .hero-card::before {
       content: "";
       position: absolute;
       inset: -40%;
       background:
-        radial-gradient(circle at 0 0, rgba(249, 115, 22, 0.28), transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(37, 99, 235, 0.2), transparent 55%);
-      opacity: 0.7;
+        radial-gradient(circle at 0 0, rgba(249, 115, 22, 0.22), transparent 60%),
+        radial-gradient(circle at 100% 100%, rgba(34, 197, 94, 0.18), transparent 60%);
+      opacity: 0.8;
       pointer-events: none;
     }
 
-    .hero-right-inner {
+    .hero-card-inner {
       position: relative;
       z-index: 1;
     }
 
-    .right-tag {
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #6b7280;
+    .hero-card-head {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .right-badge {
-      padding: 0.16rem 0.6rem;
-      border-radius: 999px;
-      background: #0f172a;
-      color: #f9fafb;
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .right-main {
-      display: flex;
-      align-items: flex-end;
       justify-content: space-between;
-      gap: 0.75rem;
-      margin-bottom: 0.65rem;
-      flex-wrap: wrap;
-    }
-
-    .right-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-    }
-
-    .right-sub {
-      font-size: 0.88rem;
-      color: #4b5563;
-    }
-
-    .right-badge-big {
-      padding: 0.25rem 0.8rem;
-      border-radius: 999px;
-      background: #0b1220;
-      color: #e5e7eb;
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      border: 1px solid rgba(15, 23, 42, 0.9);
-      white-space: nowrap;
-    }
-
-    .right-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem;
-      font-size: 0.8rem;
+      gap: 0.5rem;
       margin-bottom: 0.6rem;
     }
 
-    .right-cell {
-      border-radius: 0.9rem;
-      padding: 0.6rem 0.7rem;
-      background: rgba(15, 23, 42, 0.03);
-      border: 1px dashed rgba(156, 163, 175, 0.7);
-    }
-
-    .right-cell span {
-      display: block;
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #6b7280;
-      margin-bottom: 0.16rem;
-    }
-
-    .right-cell strong {
+    .hero-card-title {
       font-size: 0.9rem;
+      font-weight: 600;
     }
 
-    .right-footer {
-      margin-top: 0.4rem;
-      padding-top: 0.55rem;
-      border-top: 1px dashed rgba(156, 163, 175, 0.7);
+    .hero-card-tag {
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .mini-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.3rem;
       font-size: 0.78rem;
-      color: #4b5563;
-      display: flex;
-      justify-content: space-between;
-      gap: 0.5rem;
-      flex-wrap: wrap;
     }
 
-    .right-footer strong {
-      color: #0f172a;
+    .mini-table thead {
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .mini-table th,
+    .mini-table td {
+      padding: 0.35rem 0.45rem;
+      border-bottom: 1px solid rgba(30, 64, 175, 0.7);
+      text-align: left;
+    }
+
+    .mini-table th {
+      font-weight: 500;
+      color: var(--text-muted);
+      font-size: 0.74rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .mini-table td.label {
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      white-space: nowrap;
+    }
+
+    .mini-table td.value {
+      font-size: 0.8rem;
+    }
+
+    .hero-card-foot {
+      margin-top: 0.6rem;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .hero-card-foot strong {
+      color: #e5e7eb;
     }
 
     /* SECTION BASE */
 
     section.section {
-      margin-top: 0.2rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .section-heading {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 0.3rem;
-    }
-
-    .section-sub {
-      font-size: 0.92rem;
-      color: #e5e7eb;
-      max-width: 38rem;
-      opacity: 0.9;
-      margin-bottom: 1.4rem;
+      margin-top: 0.4rem;
+      margin-bottom: 0.4rem;
     }
 
     .section-tag {
-      font-size: 0.76rem;
-      letter-spacing: 0.18em;
+      font-size: 0.78rem;
       text-transform: uppercase;
-      color: #9ca3af;
-      margin-bottom: 0.35rem;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
     }
 
-    /* WHAT IS ICPLT20 – PANEL */
-
-    .panel-row {
-      display: grid;
-      grid-template-columns: minmax(0, 2.4fr) minmax(0, 2.2fr);
-      gap: 1.3rem;
+    .section-heading {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
     }
 
-    .panel {
-      background: var(--panel);
-      color: var(--text-dark);
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+      margin-bottom: 1rem;
+    }
+
+    /* TABLE SECTION – WHAT IS ICPLT20 */
+
+    .table-card {
       border-radius: 1.1rem;
-      border: 1px solid var(--border-soft);
-      padding: 1.2rem 1.3rem;
-      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.9);
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 1rem 0.9rem 1rem;
+      overflow: hidden;
     }
 
-    .panel-title {
-      font-size: 1.05rem;
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .table-title {
+      font-size: 0.98rem;
       font-weight: 600;
-      margin-bottom: 0.35rem;
     }
 
-    .panel-body {
-      font-size: 0.88rem;
-      color: #4b5563;
-      margin-bottom: 0.7rem;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-    }
-
-    .pill {
-      font-size: 0.74rem;
-      padding: 0.2rem 0.7rem;
+    .table-pill {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.65rem;
       border-radius: 999px;
-      border: 1px solid var(--border-soft);
-      background: var(--panel-soft);
-      color: #4b5563;
+      border: 1px solid rgba(248, 250, 252, 0.2);
+      background: rgba(15, 23, 42, 0.95);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
     }
 
-    .pill-accent {
-      border-color: rgba(249, 115, 22, 0.5);
-      color: #b45309;
-      background: rgba(254, 249, 195, 0.8);
+    .main-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-top: 0.25rem;
     }
 
-    .panel-list {
-      list-style: none;
-      padding-left: 0;
-      margin: 0.1rem 0 0.3rem;
-      font-size: 0.86rem;
-      color: #4b5563;
+    .main-table thead {
+      background: rgba(15, 23, 42, 0.95);
     }
 
-    .panel-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.4rem;
-      margin-bottom: 0.25rem;
+    .main-table th,
+    .main-table td {
+      padding: 0.55rem 0.45rem;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+      text-align: left;
+      vertical-align: top;
     }
 
-    .panel-dot {
-      width: 6px;
-      height: 6px;
-      margin-top: 0.38rem;
-      border-radius: 999px;
-      background: var(--accent-alt);
-      flex-shrink: 0;
+    .main-table th {
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
     }
 
-    /* PHASE 1 SECTION */
+    .main-table td strong {
+      font-weight: 600;
+    }
 
-    .phase-layout {
+    .main-table td {
+      color: #e5e7eb;
+    }
+
+    .highlight-row td {
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    /* PHASE 1 – SIMPLE INFO TABLE */
+
+    .phase-grid {
+      margin-top: 0.5rem;
       display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 2.1fr);
-      gap: 1.3rem;
-      margin-top: 0.8rem;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 2fr);
+      gap: 1rem;
     }
 
     .phase-card {
-      background: rgba(15, 23, 42, 0.85);
-      border-radius: 1.2rem;
-      padding: 1.15rem 1.1rem;
-      border: 1px solid rgba(148, 163, 184, 0.7);
+      border-radius: 1.1rem;
+      background: var(--card-soft);
+      border: 1px solid var(--border);
+      padding: 0.9rem 0.9rem 1rem;
+      font-size: 0.84rem;
     }
 
-    .phase-card-title {
+    .phase-title {
       font-size: 0.9rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #9ca3af;
-      margin-bottom: 0.25rem;
-    }
-
-    .phase-card-main {
-      font-size: 1rem;
       font-weight: 600;
       margin-bottom: 0.4rem;
     }
 
-    .phase-card-body {
-      font-size: 0.86rem;
-      color: #e5e7eb;
-      opacity: 0.95;
-    }
-
-    .phase-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.7rem;
-      margin-top: 0.75rem;
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
       font-size: 0.8rem;
     }
 
-    .phase-cell {
-      border-radius: 0.9rem;
-      padding: 0.5rem 0.6rem;
-      border: 1px dashed rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.7);
+    .info-table td {
+      padding: 0.45rem 0.3rem;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+      vertical-align: top;
     }
 
-    .phase-cell span {
-      display: block;
+    .info-label {
+      color: var(--text-muted);
+      width: 32%;
+      font-size: 0.78rem;
+    }
+
+    .info-value {
+      color: #e5e7eb;
+    }
+
+    .chip-row {
+      margin-top: 0.55rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
       font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #9ca3af;
-      margin-bottom: 0.12rem;
     }
 
-    .phase-cell strong {
-      font-size: 0.9rem;
+    .chip {
+      padding: 0.16rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: var(--text-muted);
     }
 
-    /* SMALL TIMELINE */
-
-    .timeline {
-      margin-top: 0.85rem;
-      font-size: 0.82rem;
+    .chip-accent {
+      border-color: rgba(249, 115, 22, 0.8);
+      color: #fed7aa;
+      background: var(--accent-soft);
     }
 
-    .timeline-row {
-      display: grid;
-      grid-template-columns: 0.18fr 1.9fr;
-      gap: 0.5rem;
-      margin-bottom: 0.4rem;
+    .phase-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.55rem;
     }
 
-    .timeline-step {
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #9ca3af;
-    }
+    /* CTA */
 
-    .timeline-content strong {
-      display: block;
-      margin-bottom: 0.15rem;
-    }
-
-    /* CTA STRIP */
-
-    .cta-strip {
-      margin-top: 2.1rem;
-      border-radius: 1.4rem;
-      padding: 1.2rem 1.2rem;
-      background:
-        linear-gradient(135deg, rgba(249, 115, 22, 0.16), rgba(37, 99, 235, 0.2));
-      border: 1px solid rgba(249, 115, 22, 0.55);
-      display: grid;
-      grid-template-columns: minmax(0, 2.7fr) minmax(0, 2.1fr);
-      gap: 1rem;
+    .cta {
+      margin-top: 1.7rem;
+      border-radius: 1.1rem;
+      border: 1px solid rgba(250, 204, 21, 0.7);
+      background: radial-gradient(circle at top left, rgba(248, 181, 24, 0.22), transparent 60%);
+      padding: 0.9rem 0.9rem 1rem;
+      font-size: 0.84rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      justify-content: space-between;
       align-items: center;
     }
 
-    .cta-strip-title {
-      font-size: 1.02rem;
+    .cta-text {
+      max-width: 26rem;
+    }
+
+    .cta-title {
+      font-size: 0.95rem;
       font-weight: 600;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
     }
 
-    .cta-strip-text {
-      font-size: 0.86rem;
-      color: #fefce8;
-      max-width: 30rem;
-    }
-
-    .cta-strip-actions {
+    .cta-actions {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.55rem;
-      font-size: 0.8rem;
-    }
-
-    .cta-strip-note {
-      color: #fef9c3;
-      opacity: 0.9;
+      flex-wrap: wrap;
+      gap: 0.6rem;
     }
 
     /* FOOTER */
 
     footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.7);
-      padding: 1.25rem 1.25rem 2rem;
+      padding: 1.2rem 1.25rem 2rem;
       font-size: 0.78rem;
-      color: #9ca3af;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(30, 64, 175, 0.7);
     }
 
     .footer-inner {
-      max-width: 1120px;
+      max-width: 1100px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
-      gap: 0.75rem;
       flex-wrap: wrap;
+      gap: 0.75rem;
       align-items: center;
     }
 
     .footer-links {
       display: flex;
-      gap: 0.9rem;
+      gap: 0.8rem;
       flex-wrap: wrap;
     }
 
@@ -723,46 +587,24 @@
       color: #facc15;
     }
 
-    /* RESPONSIVE BREAKPOINTS */
+    /* RESPONSIVE */
 
-    @media (max-width: 960px) {
+    @media (max-width: 900px) {
       .hero {
         grid-template-columns: 1fr;
       }
-      .hero-right-card {
+      .hero-card {
         order: -1;
       }
-      .panel-row {
-        grid-template-columns: 1fr;
-      }
-      .phase-layout {
-        grid-template-columns: 1fr;
-      }
-      .cta-strip {
+      .phase-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 700px) {
       .nav {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.6rem;
-      }
-      .nav-cta {
-        justify-content: flex-start;
-      }
-      .hero {
-        padding-top: 1.8rem;
-      }
-      .hero-bullets {
-        grid-template-columns: 1fr 1fr;
-      }
-      .right-grid {
-        grid-template-columns: 1fr;
-      }
-      .phase-grid {
-        grid-template-columns: 1fr;
       }
     }
 
@@ -773,78 +615,56 @@
       .nav {
         padding-inline: 1rem;
       }
-      .top-strip-inner {
-        padding-inline: 1rem;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
-        font-size: 0.7rem;
-      }
       .hero {
-        gap: 1.5rem;
+        padding-top: 1.7rem;
       }
-      .hero-title {
-        font-size: 2rem;
+      .main-table thead {
+        display: none;
       }
-      .hero-bullets {
-        grid-template-columns: 1fr;
+      .main-table tr {
+        display: block;
+        padding: 0.55rem 0;
+        border-bottom: 1px solid rgba(31, 41, 55, 0.9);
       }
-      .hero-right-card {
-        padding: 1.1rem 1rem 1.2rem;
+      .main-table td {
+        display: block;
+        padding: 0.2rem 0;
       }
-      .right-main {
+      .main-table td:first-child {
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+      .mini-table th:nth-child(3),
+      .mini-table td:nth-child(3) {
+        display: none;
+      }
+      .cta {
         flex-direction: column;
         align-items: flex-start;
-      }
-      .right-badge-big {
-        align-self: flex-start;
-      }
-      .cta-strip {
-        padding: 1rem 0.9rem;
-      }
-      .section-heading {
-        font-size: 1.25rem;
-      }
-      .panel {
-        padding: 1rem 0.95rem;
       }
     }
 
-    @media (max-width: 420px) {
+    @media (max-width: 480px) {
+      .hero-actions,
+      .cta-actions {
+        flex-direction: column;
+        width: 100%;
+      }
       .btn,
       .btn-primary,
       .btn-outline {
         width: 100%;
         justify-content: center;
       }
-      .nav-pill {
-        width: 100%;
-        text-align: center;
-        justify-content: center;
-      }
-      .hero-actions {
+      .table-header {
         flex-direction: column;
-      }
-      .cta-strip-actions {
-        width: 100%;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
 <body>
 <div class="page">
-  <!-- LIVE STRIP -->
-  <div class="top-strip">
-    <div class="top-strip-inner">
-      <div class="top-strip-tag">
-        <span class="top-strip-dot"></span>
-        ICPLT20 • INDIAN CORPORATE PREMIER LEAGUE T20
-      </div>
-      <div>Phase 1: Madhya Pradesh Corporate Edition • Coming Soon</div>
-    </div>
-  </div>
-
-  <!-- NAV -->
   <header>
     <nav class="nav">
       <div class="logo-wrap">
@@ -856,9 +676,9 @@
           <div class="logo-text-sub">Indian Corporate Premier League T20</div>
         </div>
       </div>
-      <div class="nav-cta">
-        <div class="nav-pill">Structured • Merit-Based • National Vision</div>
-        <a href="#phase1" class="nav-link"><span>MP Phase 1</span></a>
+      <div class="nav-right">
+        <div class="nav-pill">Phase 1 • MP Corporate Edition</div>
+        <a href="#phase1" class="nav-link"><span>View format</span></a>
       </div>
     </nav>
   </header>
@@ -868,296 +688,228 @@
       <!-- HERO -->
       <section class="hero">
         <div>
-          <div class="hero-left-topline">
-            <span class="hero-chip">New Format</span>
-            Corporate T20 • Players + Companies + Club Talent
+          <div class="hero-kicker">
+            <span class="hero-chip">New</span>
+            Corporate T20 • India
           </div>
           <h1 class="hero-title">
-            T20 cricket for<br />
-            <span>people who still have meetings on Monday.</span>
+            Corporate cricket,<br />
+            <span>run like a real league.</span>
           </h1>
           <p class="hero-sub">
-            <strong>ICPLT20</strong> (Indian Corporate Premier League T20) is a
-            long-term ecosystem for corporate cricketers and serious local club
-            players — with open trials, structured drafts, recorded stats and a
-            clear pathway towards state-level and national-level recognition.
+            <strong>ICPLT20</strong> is a T20 ecosystem where corporate players and
+            local club talent play together with trials, stats and structure — starting
+            with Phase 1 in Madhya Pradesh.
           </p>
-
-          <div class="hero-bullets">
-            <div class="hero-bullet">
-              <span>Format</span>
-              <strong>T20 • Proper grounds • Neutral umpires</strong>
-            </div>
-            <div class="hero-bullet">
-              <span>Players</span>
-              <strong>Corporate employees + graded club players</strong>
-            </div>
-            <div class="hero-bullet">
-              <span>Vision</span>
-              <strong>Multi-city zones → National corporate finals</strong>
-            </div>
-          </div>
-
           <div class="hero-actions">
-            <a href="#phase1" class="btn btn-primary">🏏 Understand Phase 1 (MP)</a>
-            <a href="#interest" class="btn btn-outline">📋 Register interest (players &amp; corporates)</a>
+            <a href="#phase1" class="btn btn-primary">🏏 See Phase 1 plan</a>
+            <a href="#interest" class="btn btn-outline">📋 Register interest</a>
           </div>
-
           <div class="hero-note">
-            First edition: <strong>ICPLT20 • MP Corporate Phase 1</strong>.  
-            8 teams, honest trials, and no timepass cricket.
+            First edition: <strong>MP Corporate T20 • 8 franchises</strong>.  
+            Built to be serious, not timepass.
           </div>
         </div>
 
-        <!-- SCOREBOARD STYLE EXPLAINER -->
-        <aside class="hero-right-card">
-          <div class="hero-right-inner">
-            <div class="right-tag">
-              <span>WHAT EXACTLY IS ICPLT20?</span>
-              <span class="right-badge">Explainer card</span>
+        <!-- MINI TABLE CARD -->
+        <aside class="hero-card">
+          <div class="hero-card-inner">
+            <div class="hero-card-head">
+              <div class="hero-card-title">Quick view – what is ICPLT20?</div>
+              <div class="hero-card-tag">Snapshot</div>
             </div>
-            <div class="right-main">
-              <div>
-                <div class="right-title">A governing ecosystem, not just a one-off tournament.</div>
-                <div class="right-sub">
-                  Think of ICPLT20 as a structured framework:  
-                  <strong>identity + stats + pathways for corporate cricket</strong>.
-                </div>
-              </div>
-              <div class="right-badge-big">T20 • NATIONAL VISION</div>
-            </div>
-
-            <div class="right-grid">
-              <div class="right-cell">
-                <span>Core idea</span>
-                <strong>Corporate cricketers treated like real athletes.</strong>
-              </div>
-              <div class="right-cell">
-                <span>Players we serve</span>
-                <strong>Working professionals + overlooked club talent (19+)</strong>
-              </div>
-              <div class="right-cell">
-                <span>What we provide</span>
-                <strong>Trials, drafts, fixtures, data, content, visibility.</strong>
-              </div>
-              <div class="right-cell">
-                <span>Long-term ladder</span>
-                <strong>City → Zone → ICPLT20 National Corporate Cup.</strong>
-              </div>
-            </div>
-
-            <div class="right-footer">
-              <span><strong>Today:</strong> MP Corporate Phase 1.</span>
-              <span><strong>Next:</strong> NCR / other zones &amp; all-India finals.</span>
+            <table class="mini-table">
+              <thead>
+                <tr>
+                  <th>Aspect</th>
+                  <th>Right now</th>
+                  <th>Long term</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="label">Base</td>
+                  <td class="value">Corporate + club players in MP</td>
+                  <td class="value">Multi-city corporate zones in India</td>
+                </tr>
+                <tr>
+                  <td class="label">Format</td>
+                  <td class="value">T20 • Trials • Draft • League + Playoffs</td>
+                  <td class="value">National corporate finals</td>
+                </tr>
+                <tr>
+                  <td class="label">Why it exists</td>
+                  <td class="value">To give working pros and club talent a serious stage</td>
+                  <td class="value">To build a recognisable brand for corporate cricket</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="hero-card-foot">
+              <strong>Simple idea:</strong> treat office cricketers and local
+              players like proper athletes, with structure and visibility.
             </div>
           </div>
         </aside>
       </section>
 
-      <!-- WHAT IS ICPLT20 -->
+      <!-- WHAT IS ICPLT20 – TABLE -->
       <section class="section" id="about">
-        <div class="section-tag">ICPLT20 • INDIAN CORPORATE PREMIER LEAGUE T20</div>
-        <h2 class="section-heading">So what is ICPLT20 in simple words?</h2>
+        <div class="section-tag">ICPLT20 • FORMAT AT A GLANCE</div>
+        <h2 class="section-heading">Who gets what from this league?</h2>
         <p class="section-sub">
-          ICPLT20 is a long-term project to give Indian working professionals a
-          serious T20 platform — without them quitting their jobs — while also
-          pulling local club talent into a structured, paid and visible ecosystem.
+          Same league, three different wins — for corporate employees, club
+          players and team owners.
         </p>
 
-        <div class="panel-row">
-          <div class="panel">
-            <div class="panel-title">1. A home for “office cricketers” who are actually good.</div>
-            <div class="panel-body">
-              Most corporate tournaments are fun, but random. ICPLT20 is built for
-              people who play league cricket on weekends, train, and still log in
-              to work on Monday — and want their cricket journey to actually mean something.
-            </div>
-            <ul class="panel-list">
-              <li>
-                <div class="panel-dot"></div>
-                <div>Structured trials instead of “bhai tu aa jaa, tu bhi khel le”.</div>
-              </li>
-              <li>
-                <div class="panel-dot"></div>
-                <div>
-                  Live scoring, match video, basic analytics — so performance is visible
-                  and can be shared.
-                </div>
-              </li>
-              <li>
-                <div class="panel-dot"></div>
-                <div>
-                  A T20 atmosphere: music, branding, content — not just one more
-                  unrecorded scorebook.
-                </div>
-              </li>
-            </ul>
-            <div class="pill-row">
-              <span class="pill pill-accent">Corporate identity</span>
-              <span class="pill">Serious cricket</span>
-              <span class="pill">Documented stats</span>
-            </div>
+        <div class="table-card">
+          <div class="table-header">
+            <div class="table-title">ICPLT20 overview table</div>
+            <div class="table-pill">High level</div>
           </div>
-
-          <div class="panel">
-            <div class="panel-title">2. A paid and visible stage for local club players.</div>
-            <div class="panel-body">
-              A lot of club players never reach state or IPL trials — but they still
-              deserve to earn, be seen, and compete. ICPLT20 integrates them inside
-              corporate teams with clear rules and match fees.
-            </div>
-            <ul class="panel-list">
-              <li>
-                <div class="panel-dot"></div>
-                <div>
-                  Club players (19+) can enter through separate trials, get graded and
-                  placed in the draft pool.
-                </div>
-              </li>
-              <li>
-                <div class="panel-dot"></div>
-                <div>
-                  Selected club players get match fees for league and playoffs — paid by
-                  the ICPLT20 structure.
-                </div>
-              </li>
-              <li>
-                <div class="panel-dot"></div>
-                <div>
-                  Best performers across seasons become part of a national scouting
-                  &amp; recommendation list.
-                </div>
-              </li>
-            </ul>
-            <div class="pill-row">
-              <span class="pill pill-accent">Match fees</span>
-              <span class="pill">Career profile</span>
-              <span class="pill">Pathway to bigger leagues</span>
-            </div>
-          </div>
+          <table class="main-table">
+            <thead>
+              <tr>
+                <th>For</th>
+                <th>ICPLT20 gives</th>
+                <th>Feels like</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="highlight-row">
+                <td><strong>Corporate players</strong></td>
+                <td>
+                  Trials, fixtures, proper umpires, recorded stats and match videos
+                  instead of random “office cricket”.
+                </td>
+                <td>A real league where your team is your company’s jersey.</td>
+              </tr>
+              <tr>
+                <td><strong>Local club players</strong></td>
+                <td>
+                  Entry via trials, placement into squads plus match fees in league
+                  and playoffs.
+                </td>
+                <td>A paying stage to perform and get noticed.</td>
+              </tr>
+              <tr>
+                <td><strong>Team owners / corporates</strong></td>
+                <td>
+                  A franchise in an early-stage property with brand value,
+                  content, and long-term upside as ICPLT20 expands.
+                </td>
+                <td>
+                  Owning a clean, modern corporate team like a football club vibe.
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
       <!-- PHASE 1 – MP -->
       <section class="section" id="phase1">
-        <div class="section-tag">PHASE 1 • MADHYA PRADESH CORPORATE EDITION</div>
-        <h2 class="section-heading">ICPLT20 Phase 1 – MP Corporate T20</h2>
+        <div class="section-tag">PHASE 1 • MP CORPORATE EDITION</div>
+        <h2 class="section-heading">Phase 1 – the Madhya Pradesh pilot</h2>
         <p class="section-sub">
-          Phase 1 is the pilot: a full T20 season based out of Madhya Pradesh,
-          designed to prove the format, stories and business model with
-          <strong>8 founding corporate franchises.</strong>
+          First season is intentionally small and sharp: 8 teams, one city-base,
+          every ball recorded — to prove the format and experience.
         </p>
 
-        <div class="phase-layout">
+        <div class="phase-grid">
           <div class="phase-card">
-            <div class="phase-card-title">STRUCTURE</div>
-            <div class="phase-card-main">8 founding teams • 1 complete MP season.</div>
-            <div class="phase-card-body">
-              Each team is owned by a corporate or serious individual owner.  
-              Squads are a mix of corporate employees and graded club talent.
-            </div>
-            <div class="phase-grid">
-              <div class="phase-cell">
-                <span>Teams</span>
-                <strong>8 franchises • MP corporate ecosystem</strong>
-              </div>
-              <div class="phase-cell">
-                <span>Squad idea</span>
-                <strong>Corporate core + up to 5 club players per squad</strong>
-              </div>
-              <div class="phase-cell">
-                <span>Format</span>
-                <strong>League games → Semi-finals → Final</strong>
-              </div>
-              <div class="phase-cell">
-                <span>Standards</span>
-                <strong>Neutral umpires, scoring app, video coverage</strong>
-              </div>
-            </div>
-
-            <div class="timeline">
-              <div class="timeline-row">
-                <div class="timeline-step">STEP 1</div>
-                <div class="timeline-content">
-                  <strong>Announce franchises &amp; trial dates.</strong>
-                  Open communication for corporate teams and players.
-                </div>
-              </div>
-              <div class="timeline-row">
-                <div class="timeline-step">STEP 2</div>
-                <div class="timeline-content">
-                  <strong>Run separate trials for corporate &amp; club players.</strong>
-                  Grade and publish a transparent player pool.
-                </div>
-              </div>
-              <div class="timeline-row">
-                <div class="timeline-step">STEP 3</div>
-                <div class="timeline-content">
-                  <strong>Draft, fixtures &amp; season launch.</strong>
-                  Every ball recorded, every performance visible.
-                </div>
-              </div>
+            <div class="phase-title">Basics of Phase 1</div>
+            <table class="info-table">
+              <tbody>
+                <tr>
+                  <td class="info-label">Location</td>
+                  <td class="info-value">Madhya Pradesh (core hubs like Bhopal / Indore)</td>
+                </tr>
+                <tr>
+                  <td class="info-label">Teams</td>
+                  <td class="info-value">8 corporate / individual-owned franchises</td>
+                </tr>
+                <tr>
+                  <td class="info-label">Format</td>
+                  <td class="info-value">League matches + semi-finals + final (T20)</td>
+                </tr>
+                <tr>
+                  <td class="info-label">Squad idea</td>
+                  <td class="info-value">
+                    Corporate employees as core + limited number of club players
+                    per squad (with match fees).
+                  </td>
+                </tr>
+                <tr>
+                  <td class="info-label">Standards</td>
+                  <td class="info-value">
+                    Neutral umpires, scoring app, basic video content, simple awards.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="chip-row">
+              <span class="chip chip-accent">8 founding franchises</span>
+              <span class="chip">Trials only, no back-door entry</span>
+              <span class="chip">Zero timepass tournaments</span>
             </div>
           </div>
 
           <div class="phase-card">
-            <div class="phase-card-title">VALUE FOR STAKEHOLDERS</div>
-            <div class="phase-card-main">Why Phase 1 matters for everyone involved.</div>
-            <div class="phase-card-body">
-              MP Phase 1 is designed to feel big enough to be serious — but tight
-              enough to execute perfectly and build trust.
-            </div>
-
-            <div class="phase-grid">
-              <div class="phase-cell">
-                <span>For companies</span>
-                <strong>Employer branding, culture, CSR-friendly talent development.</strong>
-              </div>
-              <div class="phase-cell">
-                <span>For players</span>
-                <strong>A credible league name on your cricket CV.</strong>
-              </div>
-              <div class="phase-cell">
-                <span>For club talent</span>
-                <strong>Match fees + video + stats + scouting visibility.</strong>
-              </div>
-              <div class="phase-cell">
-                <span>For founders</span>
-                <strong>A repeatable template for NCR, Pune, Bangalore &amp; beyond.</strong>
-              </div>
-            </div>
-
-            <div class="timeline">
-              <div class="timeline-row">
-                <div class="timeline-step">LATER</div>
-                <div class="timeline-content">
-                  <strong>Top MP teams and players qualify for an all-India ICPLT20 corporate finals.</strong>
-                  MP Phase 1 becomes the first chapter in a multi-zone story.
-                </div>
-              </div>
+            <div class="phase-title">How it will roughly flow</div>
+            <table class="info-table">
+              <tbody>
+                <tr>
+                  <td class="info-label">Step 1</td>
+                  <td class="info-value">
+                    Announce ICPLT20 Phase 1 and confirm 8 franchises
+                    (corporates / serious owners).
+                  </td>
+                </tr>
+                <tr>
+                  <td class="info-label">Step 2</td>
+                  <td class="info-value">
+                    Run trials for corporate employees and club players, and
+                    build a graded player pool.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="info-label">Step 3</td>
+                  <td class="info-value">
+                    Teams draft their squads from the pool within fixed rules.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="info-label">Step 4</td>
+                  <td class="info-value">
+                    Season schedule, league games, points table, semi-finals and final.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="phase-note">
+              Phase 1 is the template. If it works in MP, the same format can be
+              cloned for NCR, Pune, Bangalore, etc. and later merged into an
+              all-India corporate finals.
             </div>
           </div>
         </div>
+      </section>
 
-        <!-- CTA STRIP -->
-        <div class="cta-strip" id="interest">
-          <div>
-            <div class="cta-strip-title">Be part of the first ICPLT20 season.</div>
-            <div class="cta-strip-text">
-              We are closing the blueprint for MP Phase 1: venues, overs, match
-              fees, prize money and franchise model. If you’re a corporate
-              decision-maker, serious player or potential sponsor, this is your
-              chance to enter before ICPLT20 expands to other zones.
+      <!-- CTA -->
+      <section class="section" id="interest">
+        <div class="cta">
+          <div class="cta-text">
+            <div class="cta-title">Want to be part of the first season?</div>
+            <div>
+              We’re finalising exact dates, venues and fees. If you’re a serious
+              player or a company that believes in cricket culture, you can join
+              the early list.
             </div>
           </div>
-          <div class="cta-strip-actions">
-            <!-- Replace # with real forms / links when ready -->
-            <a href="#" class="btn btn-primary">📋 I’m a player – keep me posted</a>
-            <a href="mailto:league@icplt20.in" class="btn btn-outline">💼 I represent a company / franchise</a>
-            <div class="cta-strip-note">
-              *Links are placeholders for now. You can still email us while the
-              official registration &amp; tech platform go live.
-            </div>
+          <div class="cta-actions">
+            <!-- Replace with your actual links / forms -->
+            <a href="#" class="btn btn-primary">🏏 Player / club interest</a>
+            <a href="mailto:league@icplt20.in" class="btn btn-outline">💼 Corporate / franchise enquiry</a>
           </div>
         </div>
       </section>
