@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>MPCCL – Madhya Pradesh Corporate Cricket League</title>
+  <title>ICPL – Indian Corporate Premier League</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="MPCCL – A merit-based corporate cricket league for working professionals and club players. Trials • Draft • League • Playoffs." />
+  <meta
+    name="description"
+    content="ICPL – Indian Corporate Premier League. India’s merit-based corporate cricket ecosystem. Starting with Season 1: Madhya Pradesh Edition."
+  />
   <style>
     :root {
       --bg: #050509;
@@ -28,6 +31,7 @@
       background: radial-gradient(circle at top, #111122 0, #050509 45%, #020206 100%);
       color: var(--text);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
@@ -43,7 +47,7 @@
 
     header {
       border-bottom: 1px solid var(--border);
-      background: linear-gradient(to right, rgba(245,201,76,0.08), transparent);
+      background: linear-gradient(to right, rgba(245, 201, 76, 0.08), transparent);
       position: sticky;
       top: 0;
       z-index: 50;
@@ -81,14 +85,14 @@
     }
 
     .logo-text-top {
-      font-size: 0.9rem;
-      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--muted);
     }
 
     .logo-text-main {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 600;
     }
 
@@ -101,6 +105,7 @@
       border: 1px solid rgba(245, 201, 76, 0.5);
       background: rgba(24, 24, 37, 0.7);
       color: var(--accent);
+      white-space: nowrap;
     }
 
     main {
@@ -112,6 +117,8 @@
       margin: 0 auto;
       padding: 2.5rem 1.25rem;
     }
+
+    /* HERO */
 
     .hero {
       display: grid;
@@ -131,6 +138,7 @@
       align-items: center;
       gap: 0.5rem;
       margin-bottom: 0.875rem;
+      flex-wrap: wrap;
     }
 
     .hero-kicker span.pill {
@@ -151,6 +159,7 @@
     .hero-highlight {
       background: linear-gradient(90deg, #fbbf24, #fde68a);
       -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
     }
 
@@ -241,8 +250,9 @@
       content: "";
       position: absolute;
       inset: -30%;
-      background: radial-gradient(circle at 20% 0, rgba(250, 204, 21, 0.16), transparent 55%),
-                  radial-gradient(circle at 90% 20%, rgba(59, 130, 246, 0.12), transparent 60%);
+      background:
+        radial-gradient(circle at 20% 0, rgba(250, 204, 21, 0.16), transparent 55%),
+        radial-gradient(circle at 90% 20%, rgba(59, 130, 246, 0.12), transparent 60%);
       opacity: 0.9;
       pointer-events: none;
     }
@@ -329,6 +339,8 @@
       color: var(--accent);
     }
 
+    /* GENERIC SECTIONS */
+
     .section-heading {
       font-size: 1.3rem;
       font-weight: 600;
@@ -396,6 +408,8 @@
       background: rgba(245, 201, 76, 0.08);
     }
 
+    /* CTA SECTION */
+
     .cta {
       background: radial-gradient(circle at top, rgba(245, 158, 11, 0.16), transparent 60%);
       border-radius: 24px;
@@ -462,16 +476,21 @@
       color: var(--accent);
     }
 
+    /* RESPONSIVE */
+
     @media (max-width: 880px) {
       .hero {
         grid-template-columns: 1fr;
       }
+
       .hero-card {
         order: -1;
       }
+
       .cta {
         grid-template-columns: 1fr;
       }
+
       .grid-3 {
         grid-template-columns: 1fr;
       }
@@ -481,12 +500,15 @@
       .nav-badge {
         display: none;
       }
+
       .hero-title {
         font-size: 1.9rem;
       }
+
       .nav-inner {
         padding-inline: 1rem;
       }
+
       .section {
         padding-inline: 1rem;
       }
@@ -498,45 +520,49 @@
   <header>
     <div class="nav-inner">
       <div class="logo-mark">
-        <div class="logo-icon">MP</div>
+        <div class="logo-icon">IC</div>
         <div>
-          <div class="logo-text-top">Corporate Premier Cricket</div>
-          <div class="logo-text-main">MPCCL</div>
+          <div class="logo-text-top">Indian Corporate Premier</div>
+          <div class="logo-text-main">ICPL</div>
         </div>
       </div>
-      <div class="nav-badge">Phase–1 • Coming Soon</div>
+      <div class="nav-badge">Season 1 • MP Edition</div>
     </div>
   </header>
 
   <main>
+    <!-- HERO -->
     <section class="section hero">
       <div>
         <div class="hero-kicker">
           <span class="pill">Trials • Draft • League</span>
-          8 TEAMS • MP PHASE–1
+          8 TEAMS • MADHYA PRADESH PHASE–1
         </div>
         <h1 class="hero-title">
-          A new era of<br />
-          <span class="hero-highlight">corporate cricket</span> in Madhya Pradesh.
+          India’s first serious<br />
+          <span class="hero-highlight">corporate cricket ecosystem.</span>
         </h1>
         <p class="hero-sub">
-          MPCCL is a <span>merit-based corporate cricket league</span> where
-          working professionals and local club players share the same field —
-          through structured trials, serious competition, and a clear pathway to bigger stages.
+          ICPL – <span>Indian Corporate Premier League</span> is designed for
+          working professionals and local club players who want real competition,
+          proper structure, and a pathway to bigger stages — starting with
+          <span>Season 1: Madhya Pradesh Edition</span>.
         </p>
 
         <div class="hero-actions">
-          <a href="#coming-soon" class="btn btn-primary">
-            🔒 Player registrations opening soon
+          <!-- TODO: replace # with your registration form link -->
+          <a href="#registrations" class="btn btn-primary">
+            🔒 Player &amp; franchise interest – coming soon
           </a>
-          <a href="mailto:league@mpccl.in" class="btn btn-outline">
-            📩 Franchise / sponsor enquiry
+          <!-- TODO: change email/contact -->
+          <a href="mailto:league@icpl.in" class="btn btn-outline">
+            📩 Talk to the ICPL team
           </a>
         </div>
 
         <div class="hero-meta">
-          <span><strong>Phase–1:</strong> 8 teams • MP only</span>
-          <span><strong>Next:</strong> DL–NCR &amp; National Corporate Cup</span>
+          <span><strong>Phase–1:</strong> 8 teams • Madhya Pradesh</span>
+          <span><strong>Phase–2:</strong> NCR &amp; other zones</span>
         </div>
       </div>
 
@@ -544,56 +570,59 @@
         <div class="hero-card-inner">
           <div class="hero-badge">
             <span class="hero-badge-dot"></span>
-            2025 • SEASON ONE
+            2025 • ICPL SEASON 1
           </div>
-          <div class="hero-card-title">Coming Soon: Trials &amp; Franchise Draft</div>
+          <div class="hero-card-title">A structured ladder for corporate cricket.</div>
           <p class="hero-card-text">
-            Structured trials, graded player pool, and a professional draft system.
-            No timepass cricket — only serious competition.
+            From open trials to a graded player pool, to a professional draft and
+            league system — ICPL is built to feel closer to a professional league
+            than a casual weekend tournament.
           </p>
 
           <div class="hero-grid">
             <div class="hero-grid-item">
-              <span class="label">Trials</span>
-              <span class="value">Corporate &amp; Club • MP</span>
+              <span class="label">TRIALS</span>
+              <span class="value">Corporate &amp; club players • MP</span>
             </div>
             <div class="hero-grid-item">
-              <span class="label">Team Mix</span>
-              <span class="value">Corporate employees + 5 club players</span>
+              <span class="label">TEAM MIX</span>
+              <span class="value">Corporate employees + 5 local club players</span>
             </div>
             <div class="hero-grid-item">
-              <span class="label">Format</span>
+              <span class="label">FORMAT</span>
               <span class="value">League + Playoffs</span>
             </div>
             <div class="hero-grid-item">
-              <span class="label">Vision</span>
-              <span class="value">Pathway to bigger leagues</span>
+              <span class="label">VISION</span>
+              <span class="value">National corporate championships</span>
             </div>
           </div>
 
           <div class="hero-card-footer">
-            <span>Phase–1: <strong>MP only</strong> &nbsp;•&nbsp; Phase–2: <strong>DL–NCR</strong></span>
-            <span>National Corporate League planned from Season–3</span>
+            <span>MP Edition is the <strong>first step</strong> in the ICPL journey.</span>
+            <span>More zones and national finals to follow.</span>
           </div>
         </div>
       </aside>
     </section>
 
+    <!-- WHY ICPL -->
     <section class="section">
-      <h2 class="section-heading">Why MPCCL?</h2>
+      <h2 class="section-heading">Why Indian Corporate Premier League?</h2>
       <p class="section-sub">
-        We are building the platform that’s missing today: serious, structured, and merit-based
-        corporate cricket. Not just another weekend tournament — but an ecosystem where
-        brand value, player opportunity, and competitive quality grow every season.
+        ICPL is not “just another corporate tournament.” It’s a long-term
+        ecosystem where companies build sporting identity, club players find a
+        stage, and serious cricket happens on proper grounds with real structure.
       </p>
 
       <div class="grid-3">
         <div class="card">
           <div class="card-title">FOR CORPORATE EMPLOYEES</div>
-          <div class="card-main">A real stage, not just box cricket.</div>
+          <div class="card-main">A real cricket platform, not box cricket.</div>
           <div class="card-body">
-            Structured trials, proper umpires, live scoring, match video, and league tables.
-            Employees don’t just “play a match” — they represent a franchise, a city, and a culture.
+            Structured trials, professional umpires, live scoring, match video,
+            and league tables. Employees don’t just play — they represent a
+            franchise, a city, and a culture under the ICPL banner.
           </div>
           <div class="tag-row">
             <span class="tag">Employer branding</span>
@@ -604,10 +633,11 @@
 
         <div class="card">
           <div class="card-title">FOR CLUB PLAYERS</div>
-          <div class="card-main">Perform. Get paid. Be noticed.</div>
+          <div class="card-main">Perform. Get paid. Build a career profile.</div>
           <div class="card-body">
-            Local club talent that doesn’t get state / national breaks gets a platform to earn match fees,
-            build statistics, and be visible to selectors, coaches, and future leagues.
+            Local club talent that doesn’t get state or national breaks gets a platform
+            to earn match fees, build stats, and be visible to selectors, coaches,
+            and future leagues — while playing in front of corporate franchises.
           </div>
           <div class="tag-row">
             <span class="tag tag-accent">Match fees</span>
@@ -618,10 +648,11 @@
 
         <div class="card">
           <div class="card-title">FOR TEAM OWNERS</div>
-          <div class="card-main">Build a cricket brand that lasts.</div>
+          <div class="card-main">Own an ICPL franchise from Season 1.</div>
           <div class="card-body">
-            Own one of the first 8 franchises in MP. Over time, your team builds history, rivalries,
-            player stories, and a permanent seat in an expanding national corporate ecosystem.
+            Early franchises in MP Edition become the founding brands of ICPL.
+            Over time, your team builds history, rivalries, player stories and
+            a permanent place in a national corporate ecosystem.
           </div>
           <div class="tag-row">
             <span class="tag tag-accent">Franchise bidding</span>
@@ -632,11 +663,13 @@
       </div>
     </section>
 
-    <section class="section" id="coming-soon">
-      <h2 class="section-heading">How Phase–1 will work</h2>
+    <!-- HOW IT WORKS -->
+    <section class="section" id="registrations">
+      <h2 class="section-heading">How ICPL Season 1 (MP Edition) will work</h2>
       <p class="section-sub">
-        The first season is focused on Madhya Pradesh — 8 teams, honest trials, and a competitive league.
-        Details, dates and registration links will be announced here soon.
+        The first season focuses on Madhya Pradesh — 8 teams, honest trials, and
+        a competitive league where both corporate and club players have clear rules,
+        roles and rewards.
       </p>
 
       <div class="grid-3">
@@ -644,8 +677,9 @@
           <div class="card-title">STEP 1</div>
           <div class="card-main">Open Trials (Corporate &amp; Club)</div>
           <div class="card-body">
-            Players register online and attend structured trials. We grade players based on skill,
-            fitness and temperament. Only selected players enter the league draft pool.
+            Players register online and attend structured trials. We grade players
+            on skill, fitness and temperament. Only selected players enter the
+            ICPL draft pool, with separate categories for corporate and club players.
           </div>
         </div>
 
@@ -653,8 +687,9 @@
           <div class="card-title">STEP 2</div>
           <div class="card-main">Draft &amp; Squad Creation</div>
           <div class="card-body">
-            8 franchises build their squads from the graded pool — with a fixed mix of corporate employees
-            and 5 local club players per team. Club players are paid match fees by the league.
+            8 franchises build their squads from the graded pool — following a fixed
+            mix of corporate employees and up to 5 local club players per team.
+            Club players receive match fees paid by the league.
           </div>
         </div>
 
@@ -662,25 +697,30 @@
           <div class="card-title">STEP 3</div>
           <div class="card-main">League, Playoffs &amp; Beyond</div>
           <div class="card-body">
-            Teams play each other in a league format followed by playoffs. Top performers and teams become
-            the core for future inter-region and national corporate competitions.
+            Teams compete in a league format followed by playoffs and a grand final.
+            Top performers and champion teams become the core for future multi-zone
+            competitions and national ICPL championships.
           </div>
         </div>
       </div>
 
+      <!-- CTA -->
       <div class="cta">
         <div>
-          <div class="cta-title">MP Phase–1 • Player &amp; Franchise Interest</div>
+          <div class="cta-title">ICPL Season 1 • Early Interest (MP Edition)</div>
           <div class="cta-text">
-            We’re finalising venues, dates, and trial structure. Be the first to know when registrations go live —
-            and secure a chance to own or play for one of the founding MPCCL franchises.
+            We’re finalising venues, dates, and detailed trial structures. If you
+            are a player, corporate team, or potential franchise owner, join the
+            early list and we’ll reach out once registrations go live.
           </div>
         </div>
         <div class="cta-actions">
+          <!-- Replace these with real links when ready -->
           <a href="#" class="btn btn-primary">📋 Join early access list</a>
           <a href="https://wa.me/910000000000" class="btn btn-outline">💬 Talk to us on WhatsApp</a>
           <div class="cta-note">
-            *Links are placeholders for now. You can connect via email / WhatsApp while we prepare the first season launch.
+            *All links are placeholders for now. You can still connect via email or WhatsApp
+            while we get Season 1 ready.
           </div>
         </div>
       </div>
@@ -689,9 +729,9 @@
 
   <footer>
     <div class="footer-inner">
-      <div>© <span id="year"></span> MPCCL • Madhya Pradesh Corporate Cricket League</div>
+      <div>© <span id="year"></span> ICPL • Indian Corporate Premier League</div>
       <div class="footer-links">
-        <a href="mailto:league@mpccl.in">Email</a>
+        <a href="mailto:league@icpl.in">Email</a>
         <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
         <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
       </div>
@@ -700,6 +740,7 @@
 </div>
 
 <script>
+  // Set current year automatically
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 </body>
