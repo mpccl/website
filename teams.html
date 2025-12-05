@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Teams – ICPLT20</title>
+<title>Franchise Cities – ICPLT20</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <style>
@@ -120,74 +120,104 @@
   }
 
   .tagline {
-    font-size: 0.98rem;
-    margin-top: 0.9rem;
+    font-size: 0.95rem;
+    margin-top: 0.8rem;
     max-width: 520px;
     color:#e5e7eb;
   }
 
-  /* TEAM GRID */
-  .teams-grid {
-    margin-top: 2.3rem;
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-    gap:1.1rem;
+  /* PILL BAR */
+  .pill-row {
+    margin-top:1.6rem;
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.5rem;
   }
 
-  .team-card {
-    border-radius: 18px;
-    border:1px solid var(--border);
-    background:rgba(15,23,42,0.95);
-    padding:1rem 0.95rem 1.1rem;
-    position:relative;
-    overflow:hidden;
-  }
-
-  .team-pill {
-    position:absolute;
-    top:0.85rem;
-    right:0.8rem;
-    font-size:0.7rem;
-    text-transform:uppercase;
-    letter-spacing:0.16em;
-    padding:0.12rem 0.6rem;
+  .pill {
+    padding:0.3rem 0.7rem;
     border-radius:999px;
-    border:1px solid rgba(249,115,22,0.8);
+    border:1px solid var(--border);
+    font-size:0.78rem;
+    color:var(--muted);
+  }
+
+  .pill.accent {
+    border-color:#f97316;
     color:#fed7aa;
     background:rgba(249,115,22,0.12);
   }
 
-  .team-name {
-    font-size:1.02rem;
-    font-weight:600;
+  /* CITY GRID */
+  .city-grid {
+    margin-top:2.2rem;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap:1.1rem;
   }
 
-  .team-city {
+  .city-card {
+    position:relative;
+    border-radius:18px;
+    border:1px solid var(--border);
+    background:radial-gradient(circle at top,rgba(249,115,22,0.14),rgba(15,23,42,0.95));
+    padding:1rem 0.95rem 1.1rem;
+    overflow:hidden;
+  }
+
+  .slot-badge {
+    position:absolute;
+    top:0.7rem;
+    right:0.8rem;
+    padding:0.16rem 0.55rem;
+    border-radius:999px;
+    border:1px solid rgba(148,163,184,0.7);
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    color:var(--muted);
+    background:rgba(15,23,42,0.9);
+  }
+
+  .city-name {
+    font-size:1.1rem;
+    font-weight:600;
+    letter-spacing:0.02em;
+  }
+
+  .city-region {
     font-size:0.82rem;
     color:var(--muted);
     margin-top:0.25rem;
   }
 
-  .team-meta {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-top:0.9rem;
-    font-size:0.8rem;
+  .franchise-line {
+    margin-top:0.6rem;
+    font-size:0.82rem;
     color:#e5e7eb;
   }
 
-  .team-meta span.label {
-    text-transform:uppercase;
-    letter-spacing:0.14em;
-    font-size:0.72rem;
-    color:var(--muted);
+  .franchise-line span {
+    color:#facc15;
+    font-weight:500;
   }
 
-  .team-tagline {
-    margin-top:0.5rem;
-    font-size:0.8rem;
-    color:#d4d4d8;
+  .city-meta {
+    margin-top:0.6rem;
+    font-size:0.78rem;
+    color:var(--muted);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+  .city-meta .tag-soft {
+    padding:0.16rem 0.55rem;
+    border-radius:999px;
+    border:1px solid rgba(148,163,184,0.7);
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
   }
 
   /* MINI TABLE */
@@ -224,17 +254,6 @@
 
   tr:last-child td {
     border-bottom:none;
-  }
-
-  .badge-soft {
-    display:inline-flex;
-    padding:0.1rem 0.6rem;
-    border-radius:999px;
-    border:1px solid rgba(148,163,184,0.7);
-    font-size:0.72rem;
-    text-transform:uppercase;
-    letter-spacing:0.13em;
-    color:var(--muted);
   }
 
   footer {
@@ -278,130 +297,122 @@
 <div class="wrapper">
 
   <div class="label-top">Phase 1 · MPCCL</div>
-  <h1>Founding <span>Franchises</span></h1>
+  <h1>Franchise <span>Cities</span></h1>
   <p class="tagline">
-    First 8 corporate sides that launch the ICPLT20 ecosystem from Madhya Pradesh.
-    Names below are placeholders – to be replaced with actual franchise partners.
+    For Season One, only the cities are locked. Franchise names, logos and identities
+    will be co-created with the first owners.
   </p>
 
-  <div class="teams-grid">
-    <div class="team-card">
-      <div class="team-pill">Founding</div>
-      <div class="team-name">Bhopal Panthers</div>
-      <div class="team-city">Bhopal · MP</div>
-      <div class="team-tagline">Aggressive, fearless, built around pace &amp; power hitting.</div>
-      <div class="team-meta">
-        <div>
-          <span class="label">Region</span><br/>Central MP
-        </div>
-        <div>
-          <span class="label">Status</span><br/>Franchise Slot
-        </div>
+  <div class="pill-row">
+    <div class="pill accent">8 City Slots</div>
+    <div class="pill">Corporate-first teams</div>
+    <div class="pill">Local club talent</div>
+    <div class="pill">Long-term franchise ecosystem</div>
+  </div>
+
+  <!-- CITY GRID -->
+  <div class="city-grid">
+    <div class="city-card">
+      <div class="slot-badge">Slot #01</div>
+      <div class="city-name">Bhopal</div>
+      <div class="city-region">Central MP</div>
+      <div class="franchise-line">
+        Franchise name: <span>To be decided with owner</span>
+      </div>
+      <div class="city-meta">
+        <span>Capital city · Core ICPL hub</span>
+        <span class="tag-soft">Corporate franchise</span>
       </div>
     </div>
 
-    <div class="team-card">
-      <div class="team-pill">Founding</div>
-      <div class="team-name">Indore Titans</div>
-      <div class="team-city">Indore · MP</div>
-      <div class="team-tagline">High-intensity white-ball unit with sharp fielders.</div>
-      <div class="team-meta">
-        <div>
-          <span class="label">Region</span><br/>Malwa
-        </div>
-        <div>
-          <span class="label">Status</span><br/>Franchise Slot
-        </div>
+    <div class="city-card">
+      <div class="slot-badge">Slot #02</div>
+      <div class="city-name">Indore</div>
+      <div class="city-region">Malwa Region</div>
+      <div class="franchise-line">
+        Franchise name: <span>To be decided with owner</span>
+      </div>
+      <div class="city-meta">
+        <span>Corporate &amp; startup cluster</span>
+        <span class="tag-soft">Corporate franchise</span>
       </div>
     </div>
 
-    <div class="team-card">
-      <div class="team-pill">Founding</div>
-      <div class="team-name">Gwalior Warriors</div>
-      <div class="team-city">Gwalior · MP</div>
-      <div class="team-tagline">Tough, grinding side – known for defending low totals.</div>
-      <div class="team-meta">
-        <div>
-          <span class="label">Region</span><br/>North MP
-        </div>
-        <div>
-          <span class="label">Status</span><br/>Franchise Slot
-        </div>
+    <div class="city-card">
+      <div class="slot-badge">Slot #03</div>
+      <div class="city-name">Gwalior</div>
+      <div class="city-region">North MP</div>
+      <div class="franchise-line">
+        Franchise name: <span>To be decided with owner</span>
+      </div>
+      <div class="city-meta">
+        <span>Historic sports culture belt</span>
+        <span class="tag-soft">Corporate franchise</span>
       </div>
     </div>
 
-    <div class="team-card">
-      <div class="team-pill">Founding</div>
-      <div class="team-name">Jabalpur Strikers</div>
-      <div class="team-city">Jabalpur · MP</div>
-      <div class="team-tagline">Balanced unit with strong middle-order and spin options.</div>
-      <div class="team-meta">
-        <div>
-          <span class="label">Region</span><br/>Mahakaushal
-        </div>
-        <div>
-          <span class="label">Status</span><br/>Franchise Slot
-        </div>
+    <div class="city-card">
+      <div class="slot-badge">Slot #04</div>
+      <div class="city-name">Jabalpur</div>
+      <div class="city-region">Mahakaushal</div>
+      <div class="franchise-line">
+        Franchise name: <span>To be decided with owner</span>
+      </div>
+      <div class="city-meta">
+        <span>Strong local cricket base</span>
+        <span class="tag-soft">Corporate franchise</span>
       </div>
     </div>
 
-    <div class="team-card">
-      <div class="team-pill">Founding</div>
-      <div class="team-name">Ujjain Royals</div>
-      <div class="team-city">Ujjain · MP</div>
-      <div class="team-tagline">Technically solid players with calm game management.</div>
-      <div class="team-meta">
-        <div>
-          <span class="label">Region</span><br/>Malwa Belt
-        </div>
-        <div>
-          <span class="label">Status</span><br/>Franchise Slot
-        </div>
+    <div class="city-card">
+      <div class="slot-badge">Slot #05</div>
+      <div class="city-name">Ujjain</div>
+      <div class="city-region">Malwa Belt</div>
+      <div class="franchise-line">
+        Franchise name: <span>To be decided with owner</span>
+      </div>
+      <div class="city-meta">
+        <span>Growing corporate presence</span>
+        <span class="tag-soft">Corporate franchise</span>
       </div>
     </div>
 
-    <div class="team-card">
-      <div class="team-pill">Founding</div>
-      <div class="team-name">Sagar Stallions</div>
-      <div class="team-city">Sagar · MP</div>
-      <div class="team-tagline">Workrate first – fitness-heavy squad identity.</div>
-      <div class="team-meta">
-        <div>
-          <span class="label">Region</span><br/>Bundelkhand
-        </div>
-        <div>
-          <span class="label">Status</span><br/>Franchise Slot
-        </div>
+    <div class="city-card">
+      <div class="slot-badge">Slot #06</div>
+      <div class="city-name">Sagar</div>
+      <div class="city-region">Bundelkhand</div>
+      <div class="franchise-line">
+        Franchise name: <span>To be decided with owner</span>
+      </div>
+      <div class="city-meta">
+        <span>Regional business &amp; education hub</span>
+        <span class="tag-soft">Corporate franchise</span>
       </div>
     </div>
 
-    <div class="team-card">
-      <div class="team-pill">Founding</div>
-      <div class="team-name">Rewa Rangers</div>
-      <div class="team-city">Rewa · MP</div>
-      <div class="team-tagline">Strong in spin-friendly conditions and slow surfaces.</div>
-      <div class="team-meta">
-        <div>
-          <span class="label">Region</span><br/>Vindhya
-        </div>
-        <div>
-          <span class="label">Status</span><br/>Franchise Slot
-        </div>
+    <div class="city-card">
+      <div class="slot-badge">Slot #07</div>
+      <div class="city-name">Rewa</div>
+      <div class="city-region">Vindhya</div>
+      <div class="franchise-line">
+        Franchise name: <span>To be decided with owner</span>
+      </div>
+      <div class="city-meta">
+        <span>Strong local cricket following</span>
+        <span class="tag-soft">Corporate franchise</span>
       </div>
     </div>
 
-    <div class="team-card">
-      <div class="team-pill">Founding</div>
-      <div class="team-name">Satna Chargers</div>
-      <div class="team-city">Satna · MP</div>
-      <div class="team-tagline">Fearless chasers, built around finishers and death bowling.</div>
-      <div class="team-meta">
-        <div>
-          <span class="label">Region</span><br/>Eastern MP
-        </div>
-        <div>
-          <span class="label">Status</span><br/>Franchise Slot
-        </div>
+    <div class="city-card">
+      <div class="slot-badge">Slot #08</div>
+      <div class="city-name">Satna</div>
+      <div class="city-region">Eastern MP</div>
+      <div class="franchise-line">
+        Franchise name: <span>To be decided with owner</span>
+      </div>
+      <div class="city-meta">
+        <span>Industrial &amp; logistics link</span>
+        <span class="tag-soft">Corporate franchise</span>
       </div>
     </div>
   </div>
@@ -411,52 +422,20 @@
     <table>
       <thead>
         <tr>
-          <th>Team</th>
-          <th>City / Region</th>
-          <th>Slot Type</th>
+          <th>Slot</th>
+          <th>City</th>
+          <th>Region</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Bhopal Panthers</td>
-          <td>Bhopal · Central MP</td>
-          <td><span class="badge-soft">Corporate Franchise</span></td>
-        </tr>
-        <tr>
-          <td>Indore Titans</td>
-          <td>Indore · Malwa</td>
-          <td><span class="badge-soft">Corporate Franchise</span></td>
-        </tr>
-        <tr>
-          <td>Gwalior Warriors</td>
-          <td>Gwalior · North MP</td>
-          <td><span class="badge-soft">Corporate Franchise</span></td>
-        </tr>
-        <tr>
-          <td>Jabalpur Strikers</td>
-          <td>Jabalpur · Mahakaushal</td>
-          <td><span class="badge-soft">Corporate Franchise</span></td>
-        </tr>
-        <tr>
-          <td>Ujjain Royals</td>
-          <td>Ujjain · Malwa Belt</td>
-          <td><span class="badge-soft">Corporate Franchise</span></td>
-        </tr>
-        <tr>
-          <td>Sagar Stallions</td>
-          <td>Sagar · Bundelkhand</td>
-          <td><span class="badge-soft">Corporate Franchise</span></td>
-        </tr>
-        <tr>
-          <td>Rewa Rangers</td>
-          <td>Rewa · Vindhya</td>
-          <td><span class="badge-soft">Corporate Franchise</span></td>
-        </tr>
-        <tr>
-          <td>Satna Chargers</td>
-          <td>Satna · Eastern MP</td>
-          <td><span class="badge-soft">Corporate Franchise</span></td>
-        </tr>
+        <tr><td>#01</td><td>Bhopal</td><td>Central MP</td></tr>
+        <tr><td>#02</td><td>Indore</td><td>Malwa</td></tr>
+        <tr><td>#03</td><td>Gwalior</td><td>North MP</td></tr>
+        <tr><td>#04</td><td>Jabalpur</td><td>Mahakaushal</td></tr>
+        <tr><td>#05</td><td>Ujjain</td><td>Malwa Belt</td></tr>
+        <tr><td>#06</td><td>Sagar</td><td>Bundelkhand</td></tr>
+        <tr><td>#07</td><td>Rewa</td><td>Vindhya</td></tr>
+        <tr><td>#08</td><td>Satna</td><td>Eastern MP</td></tr>
       </tbody>
     </table>
   </div>
