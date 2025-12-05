@@ -10,165 +10,248 @@
     --bg: #02040f;
     --accent: #f97316;
     --text: #ffffff;
-    --muted: #8b8f9b;
-    --border: rgba(255,255,255,0.12);
+    --muted: #9ca3af;
+    --border: rgba(255,255,255,0.16);
   }
 
-  * {margin:0;padding:0;box-sizing:border-box;font-family:Inter, sans-serif;}
+  * {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
 
   body {
-    background: radial-gradient(circle at top right, #111829, #02040f);
+    background:
+      radial-gradient(circle at 0% 0%, #1e293b 0, transparent 55%),
+      radial-gradient(circle at 100% 100%, #020617 0, transparent 60%),
+      linear-gradient(135deg, #020617, #02040f);
     color: var(--text);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
   }
 
   .wrapper {
     max-width: 900px;
     margin: auto;
-    padding: 2rem 1.3rem;
+    padding: 2.3rem 1.4rem 1.8rem;
     text-align: center;
   }
 
+  /* LOGO */
+
   .logo {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     font-weight: 800;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
+  }
+
+  .logo span {
+    color: var(--accent);
   }
 
   .sub {
     font-size: 0.9rem;
-    color: var(--muted);
-    margin-top: 0.2rem;
+    color: #e5e7eb;
+    margin-top: 0.25rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
+
+  /* HERO */
 
   .hero {
     margin-top: 3rem;
   }
 
   h1 {
-    font-size: clamp(2.3rem, 6vw, 4rem);
-    line-height: 1.1;
+    font-size: clamp(2.4rem, 6.5vw, 4.1rem);
+    line-height: 1.05;
     font-weight: 800;
   }
 
   h1 span {
-    background: linear-gradient(90deg, #f97316, #facc15);
+    background: linear-gradient(110deg, #f97316, #facc15);
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
   }
 
   .tagline {
     font-size: 1.05rem;
-    margin-top: 1rem;
-    color: var(--muted);
-    max-width: 420px;
+    margin-top: 1.1rem;
+    color: #f9fafb;
+    max-width: 440px;
     margin-left: auto;
     margin-right: auto;
   }
 
+  .tagline strong {
+    color: #fed7aa;
+    font-weight: 600;
+  }
+
+  /* PHASE BLOCK */
+
   .block {
     margin-top: 3rem;
     border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 1.8rem;
-    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 1.9rem 1.4rem;
+    backdrop-filter: blur(14px);
+    background: radial-gradient(circle at top left, rgba(15,23,42,0.95), rgba(15,23,42,0.85));
+    box-shadow: 0 26px 70px rgba(15,23,42,0.9);
   }
 
   .label {
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.18em;
-    margin-bottom: 0.7rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.6rem;
   }
 
   .phase-title {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 0.3rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 
   .coming {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--accent);
-    margin-top: 0.3rem;
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    background: linear-gradient(120deg, #f97316, #facc15);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
+
+  .mini-line {
+    margin-top: 0.6rem;
+    font-size: 0.88rem;
+    color: #e5e7eb;
+  }
+
+  /* CTA BUTTONS */
 
   .cta {
-    margin-top: 2rem;
+    margin-top: 2.3rem;
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.9rem;
   }
 
-  button, a.btn {
+  a.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 999px;
-    padding: 0.9rem 1.2rem;
-    font-size: 1rem;
+    padding: 0.9rem 1.3rem;
+    font-size: 0.98rem;
     border: none;
     cursor: pointer;
-    letter-spacing: 0.02em;
-    transition: all 0.2s;
+    letter-spacing: 0.03em;
+    transition: all 0.2s ease-out;
+    text-decoration: none;
   }
 
   .btn-primary {
     background: linear-gradient(135deg, #f97316, #facc15);
-    color: #000;
+    color: #020617;
     font-weight: 600;
+    box-shadow: 0 0 25px rgba(248,181,24,0.7);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 30px rgba(248,181,24,0.9);
   }
 
   .btn-outline {
     background: transparent;
     border: 1px solid var(--border);
-    color: var(--text);
+    color: #f9fafb;
+  }
+
+  .btn-outline:hover {
+    background: rgba(15,23,42,0.9);
   }
 
   footer {
     margin-top: auto;
     text-align: center;
-    padding: 2rem 0 1rem;
+    padding: 0 1rem 1.6rem;
     font-size: 0.8rem;
     color: var(--muted);
   }
 
+  /* RESPONSIVE */
+
   @media (min-width: 620px) {
-    .cta {flex-direction: row;justify-content:center;}
+    .cta {
+      flex-direction: row;
+      justify-content: center;
+    }
+    .cta .btn {
+      min-width: 220px;
+    }
   }
 
+  @media (max-width: 480px) {
+    .wrapper {
+      padding-inline: 1.1rem;
+    }
+    .block {
+      padding-inline: 1.1rem;
+    }
+  }
 </style>
 </head>
 
 <body>
-<div class="wrapper">
-  <div class="logo">ICPL<span style="color:#f97316">T20</span></div>
-  <div class="sub">Indian Corporate Premier League</div>
+  <div class="wrapper">
+    <div class="logo">ICPL<span>T20</span></div>
+    <div class="sub">Indian Corporate Premier League</div>
 
-  <div class="hero">
-    <h1>
-      Corporate Cricket,<br />
-      <span>Reimagined.</span>
-    </h1>
-    <p class="tagline">A national ecosystem where office players, club talent and competitive franchises finally have a real stage.</p>
+    <div class="hero">
+      <h1>
+        Corporate Cricket,<br />
+        <span>Reimagined.</span>
+      </h1>
+      <p class="tagline">
+        A national <strong>corporate T20</strong> ecosystem where office players and local club talent finally play in a serious, structured league.
+      </p>
+    </div>
+
+    <div class="block">
+      <div class="label">Phase 1 · Madhya Pradesh</div>
+      <div class="phase-title">MPCCL</div>
+      <div class="coming">8 Teams • Corporates Fighting For Glory</div>
+      <div class="mini-line">
+        The pilot chapter of ICPLT20 – built in MP, designed for all of corporate India.
+      </div>
+    </div>
+
+    <div class="cta">
+      <!-- Replace # with your real links later -->
+      <a class="btn btn-primary" href="#">🏏 Player / Club Interest</a>
+      <a class="btn btn-outline" href="#">💼 Franchise / Corporate Interest</a>
+    </div>
   </div>
 
-  <div class="block">
-    <div class="label">Phase 1</div>
-    <div class="phase-title">MPCCL</div>
-    <div class="coming">Launching Soon</div>
-  </div>
+  <footer>
+    © <span id="y"></span> ICPLT20 · All Rights Reserved
+  </footer>
 
-  <div class="cta">
-    <a class="btn btn-primary" href="#">Register Interest</a>
-    <a class="btn btn-outline" href="#">Become a Franchise</a>
-  </div>
-</div>
-
-<footer>© <span id="y"></span> ICPLT20 · All Rights Reserved</footer>
-
-<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
