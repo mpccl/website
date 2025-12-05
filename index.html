@@ -22,79 +22,104 @@
   }
 
   body {
-    background:
-      radial-gradient(circle at 0% 0%, #1e293b 0, transparent 55%),
-      radial-gradient(circle at 100% 100%, #020617 0, transparent 60%),
-      linear-gradient(135deg, #020617, #02040f);
+    background: linear-gradient(135deg, #020617, #02040f);
     color: var(--text);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    -webkit-font-smoothing: antialiased;
   }
 
-  .wrapper {
-    max-width: 900px;
-    margin: auto;
-    padding: 2.3rem 1.4rem 1.8rem;
-    text-align: center;
+  /* NAV */
+  nav {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top:0;
+    z-index: 50;
   }
 
-  /* LOGO */
-
-  .logo {
-    font-size: 1.7rem;
-    font-weight: 800;
+  .nav-left {
+    font-size: 1.3rem;
+    font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
   }
 
-  .logo span {
+  .nav-left span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .nav-links a {
+    color: #e5e7eb;
+    text-decoration: none;
+    transition: .2s;
+  }
+
+  .nav-links a:hover {
     color: var(--accent);
   }
 
-  .sub {
-    font-size: 0.9rem;
-    color: #e5e7eb;
-    margin-top: 0.25rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+  /* SOCIAL ICONS */
+
+  .social {
+    display: flex;
+    gap: 1rem;
+    margin-left: 1.5rem;
+  }
+
+  .social a svg {
+    width: 20px;
+    height: 20px;
+    stroke: #ffffffaa;
+    transition: .2s;
+  }
+
+  .social a:hover svg {
+    stroke: var(--accent);
+    transform: scale(1.15);
+  }
+
+  /* WRAPPER */
+
+  .wrapper {
+    max-width: 900px;
+    margin: auto;
+    padding: 2.5rem 1.4rem 2rem;
+    text-align: center;
   }
 
   /* HERO */
-
-  .hero {
-    margin-top: 3rem;
-  }
 
   h1 {
     font-size: clamp(2.4rem, 6.5vw, 4.1rem);
     line-height: 1.05;
     font-weight: 800;
+    margin-top: 2.5rem;
   }
 
   h1 span {
     background: linear-gradient(110deg, #f97316, #facc15);
     -webkit-background-clip: text;
-    background-clip: text;
     color: transparent;
   }
 
   .tagline {
     font-size: 1.05rem;
-    margin-top: 1.1rem;
-    color: #f9fafb;
+    margin-top: 1rem;
     max-width: 440px;
     margin-left: auto;
     margin-right: auto;
+    color: #f9fafb;
   }
-
-  .tagline strong {
-    color: #fed7aa;
-    font-weight: 600;
-  }
-
-  /* PHASE BLOCK */
 
   .block {
     margin-top: 3rem;
@@ -102,8 +127,7 @@
     border-radius: 20px;
     padding: 1.9rem 1.4rem;
     backdrop-filter: blur(14px);
-    background: radial-gradient(circle at top left, rgba(15,23,42,0.95), rgba(15,23,42,0.85));
-    box-shadow: 0 26px 70px rgba(15,23,42,0.9);
+    background: rgba(15,23,42,0.85);
   }
 
   .label {
@@ -111,12 +135,12 @@
     color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    margin-bottom: 0.6rem;
   }
 
   .phase-title {
     font-size: 1.5rem;
     font-weight: 700;
+    margin-top: .5rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
@@ -124,22 +148,13 @@
   .coming {
     margin-top: 0.8rem;
     font-size: 0.9rem;
-    font-weight: 700;
+    font-weight: bold;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
     background: linear-gradient(120deg, #f97316, #facc15);
     -webkit-background-clip: text;
-    background-clip: text;
     color: transparent;
   }
-
-  .mini-line {
-    margin-top: 0.6rem;
-    font-size: 0.88rem;
-    color: #e5e7eb;
-  }
-
-  /* CTA BUTTONS */
 
   .cta {
     margin-top: 2.3rem;
@@ -149,109 +164,108 @@
   }
 
   a.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 999px;
     padding: 0.9rem 1.3rem;
     font-size: 0.98rem;
-    border: none;
-    cursor: pointer;
-    letter-spacing: 0.03em;
-    transition: all 0.2s ease-out;
     text-decoration: none;
+    transition: .2s;
   }
 
   .btn-primary {
     background: linear-gradient(135deg, #f97316, #facc15);
     color: #020617;
     font-weight: 600;
-    box-shadow: 0 0 25px rgba(248,181,24,0.7);
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 0 30px rgba(248,181,24,0.9);
   }
 
   .btn-outline {
     background: transparent;
     border: 1px solid var(--border);
-    color: #f9fafb;
-  }
-
-  .btn-outline:hover {
-    background: rgba(15,23,42,0.9);
+    color: var(--text);
   }
 
   footer {
-    margin-top: auto;
+    padding: 1.8rem;
     text-align: center;
-    padding: 0 1rem 1.6rem;
     font-size: 0.8rem;
     color: var(--muted);
+    margin-top: auto;
   }
 
-  /* RESPONSIVE */
-
-  @media (min-width: 620px) {
-    .cta {
-      flex-direction: row;
-      justify-content: center;
-    }
-    .cta .btn {
-      min-width: 220px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .wrapper {
-      padding-inline: 1.1rem;
-    }
-    .block {
-      padding-inline: 1.1rem;
-    }
+  @media(max-width:780px){
+    .nav-links {display:none;}
   }
 </style>
 </head>
 
 <body>
-  <div class="wrapper">
-    <div class="logo">ICPL<span>T20</span></div>
-    <div class="sub">Indian Corporate Premier League</div>
 
-    <div class="hero">
-      <h1>
-        Corporate Cricket,<br />
-        <span>Reimagined.</span>
-      </h1>
-      <p class="tagline">
-        A national <strong>corporate T20</strong> ecosystem where office players and local club talent finally play in a serious, structured league.
-      </p>
-    </div>
+<nav>
+  <div class="nav-left">ICPL<span>T20</span></div>
 
-    <div class="block">
-      <div class="label">Phase 1 · Madhya Pradesh</div>
-      <div class="phase-title">MPCCL</div>
-      <div class="coming">8 Teams • Corporates Fighting For Glory</div>
-      <div class="mini-line">
-        The pilot chapter of ICPLT20 – built in MP, designed for all of corporate India.
-      </div>
-    </div>
-
-    <div class="cta">
-      <!-- Replace # with your real links later -->
-      <a class="btn btn-primary" href="#">🏏 Player / Club Interest</a>
-      <a class="btn btn-outline" href="#">💼 Franchise / Corporate Interest</a>
-    </div>
+  <div class="nav-links">
+    <a href="#">About</a>
+    <a href="#">Auction</a>
+    <a href="#">Teams</a>
+    <a href="#">Contact</a>
   </div>
 
-  <footer>
-    © <span id="y"></span> ICPLT20 · All Rights Reserved
-  </footer>
+  <div class="social">
+    <!-- Instagram -->
+    <a href="#">
+      <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
+        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8"></path>
+        <line x1="17.5" y1="6.5" x2="17.5" y2="6.51"></line>
+      </svg>
+    </a>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+    <!-- X (Twitter) -->
+    <a href="#">
+      <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
+        <path d="M4 4l16 16M20 4l-7 7"></path>
+      </svg>
+    </a>
+
+    <!-- YouTube -->
+    <a href="#">
+      <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
+        <path d="M2 7s0-2 2-3 10-1 14 0 4 3 4 3v10s0 2-2 3-10 1-14 0-4-3-4-3V7z"></path>
+        <polygon points="10 9 15 12 10 15"></polygon>
+      </svg>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="#">
+      <svg fill="none" stroke-width="1.8" viewBox="0 0 24 24">
+        <rect x="2" y="9" width="6" height="13"></rect>
+        <circle cx="5" cy="5" r="2"></circle>
+        <rect x="10" y="9" width="12" height="13"></rect>
+      </svg>
+    </a>
+  </div>
+</nav>
+
+<div class="wrapper">
+  <h1>Corporate Cricket,<br><span>Reimagined.</span></h1>
+  <p class="tagline">A national platform for serious working professionals & club cricketers.</p>
+
+  <div class="block">
+    <div class="label">Phase 1 · Madhya Pradesh</div>
+    <div class="phase-title">MPCCL</div>
+    <div class="coming">8 Teams • Corporates Fighting For Glory</div>
+  </div>
+
+  <div class="cta">
+    <a class="btn btn-primary" href="#">🏏 Player Interest</a>
+    <a class="btn btn-outline" href="#">💼 Franchise Interest</a>
+  </div>
+</div>
+
+<footer>© <span id="y"></span> ICPLT20 · All Rights Reserved</footer>
+
+<script>
+ document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
