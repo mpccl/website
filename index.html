@@ -1,935 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>ICPLT20 – Indian Corporate Premier League T20</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="ICPLT20 – Indian Corporate Premier League T20. Phase 1: MP Corporate T20 with 8 franchises, trials and structured league."
-  />
-  <style>
-    :root {
-      --bg: #050816;
-      --bg2: #020617;
-      --card: rgba(15, 23, 42, 0.9);
-      --card-soft: rgba(15, 23, 42, 0.75);
-      --accent: #f97316;
-      --accent-soft: rgba(249, 115, 22, 0.12);
-      --accent-2: #22c55e;
-      --border: rgba(148, 163, 184, 0.4);
-      --text-main: #f9fafb;
-      --text-muted: #9ca3af;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 0% 0%, #1d253f 0, transparent 55%),
-        radial-gradient(circle at 100% 100%, #0b1220 0, transparent 60%),
-        linear-gradient(135deg, var(--bg), var(--bg2));
-      color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.5;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .shell {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1.5rem 1.25rem 2.5rem;
-    }
-
-    /* HEADER */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(14px);
-      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7));
-      border-bottom: 1px solid rgba(30, 64, 175, 0.7);
-    }
-
-    .nav {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0.7rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .logo-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 14px;
-      background:
-        conic-gradient(from 200deg, #f97316, #facc15, #22c55e, #f97316);
-      padding: 2px;
-      box-shadow: 0 0 18px rgba(15, 23, 42, 0.9);
-    }
-
-    .logo-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 12px;
-      background: #020617;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .logo-text-main {
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .logo-text-sub {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      font-size: 0.78rem;
-    }
-
-    .nav-pill {
-      padding: 0.2rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .nav-link {
-      color: var(--accent);
-      font-size: 0.78rem;
-    }
-
-    .nav-link span {
-      border-bottom: 1px dashed rgba(248, 250, 252, 0.5);
-    }
-
-    /* HERO */
-
-    .hero {
-      padding-top: 2.2rem;
-      padding-bottom: 1.8rem;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
-      gap: 1.7rem;
-      align-items: stretch;
-    }
-
-    .hero-kicker {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.7rem;
-      flex-wrap: wrap;
-    }
-
-    .hero-chip {
-      padding: 0.18rem 0.65rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.9);
-      font-size: 0.7rem;
-    }
-
-    .hero-title {
-      font-size: clamp(2.1rem, 4vw, 3rem);
-      font-weight: 800;
-      line-height: 1.05;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-title span {
-      background: linear-gradient(120deg, #f97316, #facc15);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-sub {
-      font-size: 0.98rem;
-      color: #e5e7eb;
-      margin-bottom: 1.1rem;
-      max-width: 30rem;
-    }
-
-    .hero-sub strong {
-      color: #facc15;
-      font-weight: 600;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .btn {
-      border-radius: 999px;
-      padding: 0.7rem 1.3rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      border: 1px solid transparent;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      cursor: pointer;
-      background: none;
-      color: inherit;
-      transition: all 0.18s ease-out;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #f97316, #facc15);
-      color: #111827;
-      box-shadow: 0 0 20px rgba(248, 181, 24, 0.6);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 24px rgba(248, 181, 24, 0.9);
-    }
-
-    .btn-outline {
-      border-color: var(--border);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-main);
-    }
-
-    .btn-outline:hover {
-      background: rgba(15, 23, 42, 1);
-    }
-
-    .hero-note {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .hero-note strong {
-      color: #e5e7eb;
-    }
-
-    /* HERO RIGHT – MINI TABLE CARD */
-
-    .hero-card {
-      border-radius: 1.2rem;
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.8));
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      padding: 1.1rem 1.1rem 1.2rem;
-      box-shadow: 0 22px 60px rgba(15, 23, 42, 0.95);
-      font-size: 0.82rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 0 0, rgba(249, 115, 22, 0.22), transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(34, 197, 94, 0.18), transparent 60%);
-      opacity: 0.8;
-      pointer-events: none;
-    }
-
-    .hero-card-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-card-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .hero-card-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .hero-card-tag {
-      padding: 0.15rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-
-    .mini-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 0.3rem;
-      font-size: 0.78rem;
-    }
-
-    .mini-table thead {
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .mini-table th,
-    .mini-table td {
-      padding: 0.35rem 0.45rem;
-      border-bottom: 1px solid rgba(30, 64, 175, 0.7);
-      text-align: left;
-    }
-
-    .mini-table th {
-      font-weight: 500;
-      color: var(--text-muted);
-      font-size: 0.74rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .mini-table td.label {
-      color: var(--text-muted);
-      font-size: 0.76rem;
-      white-space: nowrap;
-    }
-
-    .mini-table td.value {
-      font-size: 0.8rem;
-    }
-
-    .hero-card-foot {
-      margin-top: 0.6rem;
-      font-size: 0.76rem;
-      color: var(--text-muted);
-    }
-
-    .hero-card-foot strong {
-      color: #e5e7eb;
-    }
-
-    /* SECTION BASE */
-
-    section.section {
-      margin-top: 0.4rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .section-tag {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--text-muted);
-      margin-bottom: 0.3rem;
-    }
-
-    .section-heading {
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-sub {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      max-width: 34rem;
-      margin-bottom: 1rem;
-    }
-
-    /* TABLE SECTION – WHAT IS ICPLT20 */
-
-    .table-card {
-      border-radius: 1.1rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 1rem 0.9rem 1rem;
-      overflow: hidden;
-    }
-
-    .table-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .table-title {
-      font-size: 0.98rem;
-      font-weight: 600;
-    }
-
-    .table-pill {
-      font-size: 0.72rem;
-      padding: 0.2rem 0.65rem;
-      border-radius: 999px;
-      border: 1px solid rgba(248, 250, 252, 0.2);
-      background: rgba(15, 23, 42, 0.95);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .main-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.82rem;
-      margin-top: 0.25rem;
-    }
-
-    .main-table thead {
-      background: rgba(15, 23, 42, 0.95);
-    }
-
-    .main-table th,
-    .main-table td {
-      padding: 0.55rem 0.45rem;
-      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .main-table th {
-      font-size: 0.76rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .main-table td strong {
-      font-weight: 600;
-    }
-
-    .main-table td {
-      color: #e5e7eb;
-    }
-
-    .highlight-row td {
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    /* PHASE 1 – SIMPLE INFO TABLE */
-
-    .phase-grid {
-      margin-top: 0.5rem;
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 2fr);
-      gap: 1rem;
-    }
-
-    .phase-card {
-      border-radius: 1.1rem;
-      background: var(--card-soft);
-      border: 1px solid var(--border);
-      padding: 0.9rem 0.9rem 1rem;
-      font-size: 0.84rem;
-    }
-
-    .phase-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .info-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.8rem;
-    }
-
-    .info-table td {
-      padding: 0.45rem 0.3rem;
-      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
-      vertical-align: top;
-    }
-
-    .info-label {
-      color: var(--text-muted);
-      width: 32%;
-      font-size: 0.78rem;
-    }
-
-    .info-value {
-      color: #e5e7eb;
-    }
-
-    .chip-row {
-      margin-top: 0.55rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem;
-      font-size: 0.72rem;
-    }
-
-    .chip {
-      padding: 0.16rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: var(--text-muted);
-    }
-
-    .chip-accent {
-      border-color: rgba(249, 115, 22, 0.8);
-      color: #fed7aa;
-      background: var(--accent-soft);
-    }
-
-    .phase-note {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 0.55rem;
-    }
-
-    /* CTA */
-
-    .cta {
-      margin-top: 1.7rem;
-      border-radius: 1.1rem;
-      border: 1px solid rgba(250, 204, 21, 0.7);
-      background: radial-gradient(circle at top left, rgba(248, 181, 24, 0.22), transparent 60%);
-      padding: 0.9rem 0.9rem 1rem;
-      font-size: 0.84rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .cta-text {
-      max-width: 26rem;
-    }
-
-    .cta-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.2rem;
-    }
-
-    .cta-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    /* FOOTER */
-
-    footer {
-      padding: 1.2rem 1.25rem 2rem;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      border-top: 1px solid rgba(30, 64, 175, 0.7);
-    }
-
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a:hover {
-      color: #facc15;
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-      .hero-card {
-        order: -1;
-      }
-      .phase-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .shell {
-        padding-inline: 1rem;
-      }
-      .nav {
-        padding-inline: 1rem;
-      }
-      .hero {
-        padding-top: 1.7rem;
-      }
-      .main-table thead {
-        display: none;
-      }
-      .main-table tr {
-        display: block;
-        padding: 0.55rem 0;
-        border-bottom: 1px solid rgba(31, 41, 55, 0.9);
-      }
-      .main-table td {
-        display: block;
-        padding: 0.2rem 0;
-      }
-      .main-table td:first-child {
-        font-size: 0.8rem;
-        font-weight: 600;
-      }
-      .mini-table th:nth-child(3),
-      .mini-table td:nth-child(3) {
-        display: none;
-      }
-      .cta {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-actions,
-      .cta-actions {
-        flex-direction: column;
-        width: 100%;
-      }
-      .btn,
-      .btn-primary,
-      .btn-outline {
-        width: 100%;
-        justify-content: center;
-      }
-      .table-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>ICPLT20 – Coming Soon</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+  :root {
+    --bg: #02040f;
+    --accent: #f97316;
+    --text: #ffffff;
+    --muted: #8b8f9b;
+    --border: rgba(255,255,255,0.12);
+  }
+
+  * {margin:0;padding:0;box-sizing:border-box;font-family:Inter, sans-serif;}
+
+  body {
+    background: radial-gradient(circle at top right, #111829, #02040f);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .wrapper {
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem 1.3rem;
+    text-align: center;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .sub {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+
+  .hero {
+    margin-top: 3rem;
+  }
+
+  h1 {
+    font-size: clamp(2.3rem, 6vw, 4rem);
+    line-height: 1.1;
+    font-weight: 800;
+  }
+
+  h1 span {
+    background: linear-gradient(90deg, #f97316, #facc15);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .tagline {
+    font-size: 1.05rem;
+    margin-top: 1rem;
+    color: var(--muted);
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .block {
+    margin-top: 3rem;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1.8rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 0.7rem;
+  }
+
+  .phase-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .coming {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-top: 0.3rem;
+  }
+
+  .cta {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  button, a.btn {
+    border-radius: 999px;
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #f97316, #facc15);
+    color: #000;
+    font-weight: 600;
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 2rem 0 1rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  @media (min-width: 620px) {
+    .cta {flex-direction: row;justify-content:center;}
+  }
+
+</style>
 </head>
+
 <body>
-<div class="page">
-  <header>
-    <nav class="nav">
-      <div class="logo-wrap">
-        <div class="logo-mark">
-          <div class="logo-inner">T20</div>
-        </div>
-        <div>
-          <div class="logo-text-main">ICPLT20</div>
-          <div class="logo-text-sub">Indian Corporate Premier League T20</div>
-        </div>
-      </div>
-      <div class="nav-right">
-        <div class="nav-pill">Phase 1 • MP Corporate Edition</div>
-        <a href="#phase1" class="nav-link"><span>View format</span></a>
-      </div>
-    </nav>
-  </header>
+<div class="wrapper">
+  <div class="logo">ICPL<span style="color:#f97316">T20</span></div>
+  <div class="sub">Indian Corporate Premier League</div>
 
-  <main>
-    <div class="shell">
-      <!-- HERO -->
-      <section class="hero">
-        <div>
-          <div class="hero-kicker">
-            <span class="hero-chip">New</span>
-            Corporate T20 • India
-          </div>
-          <h1 class="hero-title">
-            Corporate cricket,<br />
-            <span>run like a real league.</span>
-          </h1>
-          <p class="hero-sub">
-            <strong>ICPLT20</strong> is a T20 ecosystem where corporate players and
-            local club talent play together with trials, stats and structure — starting
-            with Phase 1 in Madhya Pradesh.
-          </p>
-          <div class="hero-actions">
-            <a href="#phase1" class="btn btn-primary">🏏 See Phase 1 plan</a>
-            <a href="#interest" class="btn btn-outline">📋 Register interest</a>
-          </div>
-          <div class="hero-note">
-            First edition: <strong>MP Corporate T20 • 8 franchises</strong>.  
-            Built to be serious, not timepass.
-          </div>
-        </div>
+  <div class="hero">
+    <h1>
+      Corporate Cricket,<br />
+      <span>Reimagined.</span>
+    </h1>
+    <p class="tagline">A national ecosystem where office players, club talent and competitive franchises finally have a real stage.</p>
+  </div>
 
-        <!-- MINI TABLE CARD -->
-        <aside class="hero-card">
-          <div class="hero-card-inner">
-            <div class="hero-card-head">
-              <div class="hero-card-title">Quick view – what is ICPLT20?</div>
-              <div class="hero-card-tag">Snapshot</div>
-            </div>
-            <table class="mini-table">
-              <thead>
-                <tr>
-                  <th>Aspect</th>
-                  <th>Right now</th>
-                  <th>Long term</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="label">Base</td>
-                  <td class="value">Corporate + club players in MP</td>
-                  <td class="value">Multi-city corporate zones in India</td>
-                </tr>
-                <tr>
-                  <td class="label">Format</td>
-                  <td class="value">T20 • Trials • Draft • League + Playoffs</td>
-                  <td class="value">National corporate finals</td>
-                </tr>
-                <tr>
-                  <td class="label">Why it exists</td>
-                  <td class="value">To give working pros and club talent a serious stage</td>
-                  <td class="value">To build a recognisable brand for corporate cricket</td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="hero-card-foot">
-              <strong>Simple idea:</strong> treat office cricketers and local
-              players like proper athletes, with structure and visibility.
-            </div>
-          </div>
-        </aside>
-      </section>
+  <div class="block">
+    <div class="label">Phase 1</div>
+    <div class="phase-title">MPCCL</div>
+    <div class="coming">Launching Soon</div>
+  </div>
 
-      <!-- WHAT IS ICPLT20 – TABLE -->
-      <section class="section" id="about">
-        <div class="section-tag">ICPLT20 • FORMAT AT A GLANCE</div>
-        <h2 class="section-heading">Who gets what from this league?</h2>
-        <p class="section-sub">
-          Same league, three different wins — for corporate employees, club
-          players and team owners.
-        </p>
-
-        <div class="table-card">
-          <div class="table-header">
-            <div class="table-title">ICPLT20 overview table</div>
-            <div class="table-pill">High level</div>
-          </div>
-          <table class="main-table">
-            <thead>
-              <tr>
-                <th>For</th>
-                <th>ICPLT20 gives</th>
-                <th>Feels like</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="highlight-row">
-                <td><strong>Corporate players</strong></td>
-                <td>
-                  Trials, fixtures, proper umpires, recorded stats and match videos
-                  instead of random “office cricket”.
-                </td>
-                <td>A real league where your team is your company’s jersey.</td>
-              </tr>
-              <tr>
-                <td><strong>Local club players</strong></td>
-                <td>
-                  Entry via trials, placement into squads plus match fees in league
-                  and playoffs.
-                </td>
-                <td>A paying stage to perform and get noticed.</td>
-              </tr>
-              <tr>
-                <td><strong>Team owners / corporates</strong></td>
-                <td>
-                  A franchise in an early-stage property with brand value,
-                  content, and long-term upside as ICPLT20 expands.
-                </td>
-                <td>
-                  Owning a clean, modern corporate team like a football club vibe.
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- PHASE 1 – MP -->
-      <section class="section" id="phase1">
-        <div class="section-tag">PHASE 1 • MP CORPORATE EDITION</div>
-        <h2 class="section-heading">Phase 1 – the Madhya Pradesh pilot</h2>
-        <p class="section-sub">
-          First season is intentionally small and sharp: 8 teams, one city-base,
-          every ball recorded — to prove the format and experience.
-        </p>
-
-        <div class="phase-grid">
-          <div class="phase-card">
-            <div class="phase-title">Basics of Phase 1</div>
-            <table class="info-table">
-              <tbody>
-                <tr>
-                  <td class="info-label">Location</td>
-                  <td class="info-value">Madhya Pradesh (core hubs like Bhopal / Indore)</td>
-                </tr>
-                <tr>
-                  <td class="info-label">Teams</td>
-                  <td class="info-value">8 corporate / individual-owned franchises</td>
-                </tr>
-                <tr>
-                  <td class="info-label">Format</td>
-                  <td class="info-value">League matches + semi-finals + final (T20)</td>
-                </tr>
-                <tr>
-                  <td class="info-label">Squad idea</td>
-                  <td class="info-value">
-                    Corporate employees as core + limited number of club players
-                    per squad (with match fees).
-                  </td>
-                </tr>
-                <tr>
-                  <td class="info-label">Standards</td>
-                  <td class="info-value">
-                    Neutral umpires, scoring app, basic video content, simple awards.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="chip-row">
-              <span class="chip chip-accent">8 founding franchises</span>
-              <span class="chip">Trials only, no back-door entry</span>
-              <span class="chip">Zero timepass tournaments</span>
-            </div>
-          </div>
-
-          <div class="phase-card">
-            <div class="phase-title">How it will roughly flow</div>
-            <table class="info-table">
-              <tbody>
-                <tr>
-                  <td class="info-label">Step 1</td>
-                  <td class="info-value">
-                    Announce ICPLT20 Phase 1 and confirm 8 franchises
-                    (corporates / serious owners).
-                  </td>
-                </tr>
-                <tr>
-                  <td class="info-label">Step 2</td>
-                  <td class="info-value">
-                    Run trials for corporate employees and club players, and
-                    build a graded player pool.
-                  </td>
-                </tr>
-                <tr>
-                  <td class="info-label">Step 3</td>
-                  <td class="info-value">
-                    Teams draft their squads from the pool within fixed rules.
-                  </td>
-                </tr>
-                <tr>
-                  <td class="info-label">Step 4</td>
-                  <td class="info-value">
-                    Season schedule, league games, points table, semi-finals and final.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="phase-note">
-              Phase 1 is the template. If it works in MP, the same format can be
-              cloned for NCR, Pune, Bangalore, etc. and later merged into an
-              all-India corporate finals.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA -->
-      <section class="section" id="interest">
-        <div class="cta">
-          <div class="cta-text">
-            <div class="cta-title">Want to be part of the first season?</div>
-            <div>
-              We’re finalising exact dates, venues and fees. If you’re a serious
-              player or a company that believes in cricket culture, you can join
-              the early list.
-            </div>
-          </div>
-          <div class="cta-actions">
-            <!-- Replace with your actual links / forms -->
-            <a href="#" class="btn btn-primary">🏏 Player / club interest</a>
-            <a href="mailto:league@icplt20.in" class="btn btn-outline">💼 Corporate / franchise enquiry</a>
-          </div>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <footer>
-    <div class="footer-inner">
-      <div>© <span id="year"></span> ICPLT20 • Indian Corporate Premier League T20</div>
-      <div class="footer-links">
-        <a href="mailto:league@icplt20.in">Email</a>
-        <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
-        <a href="https://linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
-      </div>
-    </div>
-  </footer>
+  <div class="cta">
+    <a class="btn btn-primary" href="#">Register Interest</a>
+    <a class="btn btn-outline" href="#">Become a Franchise</a>
+  </div>
 </div>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+<footer>© <span id="y"></span> ICPLT20 · All Rights Reserved</footer>
+
+<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
 </body>
 </html>
