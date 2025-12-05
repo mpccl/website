@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Franchise Cities – ICPLT20</title>
+<title>Franchise Bids – ICPLT20</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <style>
   :root {
     --bg: #02040f;
     --accent: #f97316;
+    --accent-soft: rgba(249,115,22,0.14);
     --text: #ffffff;
     --muted: #9ca3af;
     --border: rgba(255,255,255,0.16);
@@ -17,7 +18,7 @@
   * {margin:0;padding:0;box-sizing:border-box;font-family:Inter, system-ui, sans-serif;}
 
   body {
-    background: linear-gradient(135deg, #020617, #02040f);
+    background: radial-gradient(circle at top, #020617, #02040f 55%);
     color: var(--text);
     min-height: 100vh;
     display: flex;
@@ -94,9 +95,9 @@
 
   /* LAYOUT */
   .wrapper {
-    max-width: 980px;
+    max-width: 1040px;
     margin: auto;
-    padding: 2.5rem 1.4rem 2.4rem;
+    padding: 2.4rem 1.4rem 2.6rem;
   }
 
   .label-top {
@@ -110,7 +111,7 @@
     font-size: clamp(2.1rem, 5vw, 3.2rem);
     line-height: 1.1;
     font-weight: 800;
-    margin-top: 1.5rem;
+    margin-top: 1.4rem;
   }
 
   h1 span {
@@ -120,104 +121,175 @@
   }
 
   .tagline {
-    font-size: 0.95rem;
+    font-size: 0.94rem;
     margin-top: 0.8rem;
-    max-width: 520px;
+    max-width: 540px;
     color:#e5e7eb;
   }
 
-  /* PILL BAR */
-  .pill-row {
-    margin-top:1.6rem;
+  /* BID INFO STRIP */
+  .bid-strip {
+    margin-top:1.9rem;
+    border-radius:16px;
+    border:1px solid var(--border);
+    background:rgba(15,23,42,0.96);
     display:flex;
     flex-wrap:wrap;
-    gap:0.5rem;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    padding:0.9rem 1.1rem;
   }
 
-  .pill {
-    padding:0.3rem 0.7rem;
+  .bid-strip-main {
+    display:flex;
+    align-items:center;
+    gap:0.7rem;
+    font-size:0.88rem;
+  }
+
+  .pill-live {
+    padding:0.2rem 0.7rem;
     border-radius:999px;
-    border:1px solid var(--border);
-    font-size:0.78rem;
+    border:1px solid rgba(34,197,94,0.9);
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    color:#bbf7d0;
+    background:rgba(22,163,74,0.18);
+  }
+
+  .bid-strip-main strong {
+    color:#facc15;
+  }
+
+  .bid-strip-meta {
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.9rem;
+    font-size:0.8rem;
     color:var(--muted);
   }
 
-  .pill.accent {
-    border-color:#f97316;
-    color:#fed7aa;
-    background:rgba(249,115,22,0.12);
+  .bid-strip-meta span label {
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    font-size:0.72rem;
+    color:var(--muted);
+    display:block;
+  }
+
+  .bid-strip-meta span value {
+    color:#e5e7eb;
   }
 
   /* CITY GRID */
   .city-grid {
     margin-top:2.2rem;
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-    gap:1.1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap:1.2rem;
   }
 
   .city-card {
     position:relative;
     border-radius:18px;
     border:1px solid var(--border);
-    background:radial-gradient(circle at top,rgba(249,115,22,0.14),rgba(15,23,42,0.95));
+    background:radial-gradient(circle at top, var(--accent-soft), rgba(15,23,42,0.98));
     padding:1rem 0.95rem 1.1rem;
     overflow:hidden;
+  }
+
+  .city-card.highlight {
+    box-shadow:0 0 40px rgba(249,115,22,0.35);
+    border-color:rgba(249,115,22,0.9);
   }
 
   .slot-badge {
     position:absolute;
     top:0.7rem;
     right:0.8rem;
-    padding:0.16rem 0.55rem;
-    border-radius:999px;
-    border:1px solid rgba(148,163,184,0.7);
-    font-size:0.7rem;
-    text-transform:uppercase;
-    letter-spacing:0.16em;
-    color:var(--muted);
-    background:rgba(15,23,42,0.9);
-  }
-
-  .city-name {
-    font-size:1.1rem;
-    font-weight:600;
-    letter-spacing:0.02em;
-  }
-
-  .city-region {
-    font-size:0.82rem;
-    color:var(--muted);
-    margin-top:0.25rem;
-  }
-
-  .franchise-line {
-    margin-top:0.6rem;
-    font-size:0.82rem;
-    color:#e5e7eb;
-  }
-
-  .franchise-line span {
-    color:#facc15;
-    font-weight:500;
-  }
-
-  .city-meta {
-    margin-top:0.6rem;
-    font-size:0.78rem;
-    color:var(--muted);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-  }
-
-  .city-meta .tag-soft {
-    padding:0.16rem 0.55rem;
+    padding:0.16rem 0.6rem;
     border-radius:999px;
     border:1px solid rgba(148,163,184,0.7);
     font-size:0.7rem;
     text-transform:uppercase;
     letter-spacing:0.14em;
+    color:var(--muted);
+    background:rgba(15,23,42,0.9);
+  }
+
+  .city-name {
+    font-size:1.15rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+  }
+
+  .city-region {
+    font-size:0.82rem;
+    color:var(--muted);
+    margin-top:0.2rem;
+  }
+
+  .price-line {
+    margin-top:0.7rem;
+    font-size:0.86rem;
+    color:#e5e7eb;
+  }
+
+  .price-line strong {
+    color:#facc15;
+    font-weight:600;
+  }
+
+  .fomo-row {
+    margin-top:0.4rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:0.8rem;
+  }
+
+  .fomo-row span.bids {
+    color:#f97316;
+    font-weight:600;
+  }
+
+  .fomo-row span.of {
+    color:var(--muted);
+  }
+
+  .fomo-note {
+    font-size:0.74rem;
+    color:var(--muted);
+    margin-top:0.3rem;
+  }
+
+  .btn-bid {
+    margin-top:0.8rem;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:0.35rem;
+    border-radius:999px;
+    padding:0.55rem 1.05rem;
+    font-size:0.82rem;
+    text-decoration:none;
+    border:1px solid rgba(249,115,22,0.9);
+    background:rgba(249,115,22,0.16);
+    color:#fed7aa;
+    cursor:pointer;
+    transition:.18s;
+  }
+
+  .btn-bid:hover {
+    background:linear-gradient(135deg,#f97316,#facc15);
+    color:#111827;
+    box-shadow:0 0 22px rgba(249,115,22,0.6);
+  }
+
+  .btn-bid span.icon {
+    font-size:0.9rem;
   }
 
   /* MINI TABLE */
@@ -256,6 +328,175 @@
     border-bottom:none;
   }
 
+  /* MODAL */
+  .modal-backdrop {
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,0.75);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:80;
+  }
+
+  .modal {
+    width:100%;
+    max-width:460px;
+    border-radius:18px;
+    border:1px solid var(--border);
+    background:#020617;
+    box-shadow:0 30px 80px rgba(0,0,0,0.8);
+    padding:1.4rem 1.3rem 1.5rem;
+    position:relative;
+  }
+
+  .modal-header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:0.7rem;
+  }
+
+  .modal-title {
+    font-size:1.05rem;
+    font-weight:600;
+  }
+
+  .modal-sub {
+    font-size:0.8rem;
+    color:var(--muted);
+    margin-top:0.2rem;
+  }
+
+  .modal-close {
+    border:none;
+    background:transparent;
+    color:var(--muted);
+    font-size:1.1rem;
+    cursor:pointer;
+  }
+
+  .modal-chip {
+    margin-top:0.7rem;
+    padding:0.22rem 0.7rem;
+    border-radius:999px;
+    border:1px solid rgba(249,115,22,0.8);
+    font-size:0.75rem;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    color:#fed7aa;
+    background:rgba(249,115,22,0.12);
+    display:inline-block;
+  }
+
+  .modal-body {
+    margin-top:0.9rem;
+    font-size:0.84rem;
+  }
+
+  .field {
+    display:flex;
+    flex-direction:column;
+    gap:0.22rem;
+    margin-top:0.6rem;
+  }
+
+  .field label {
+    font-size:0.8rem;
+    color:var(--muted);
+  }
+
+  .field input,
+  .field textarea,
+  .field select {
+    background:rgba(15,23,42,0.95);
+    border-radius:9px;
+    border:1px solid rgba(148,163,184,0.6);
+    padding:0.55rem 0.65rem;
+    color:#f9fafb;
+    font-size:0.84rem;
+    outline:none;
+  }
+
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus {
+    border-color:var(--accent);
+    box-shadow:0 0 0 1px rgba(249,115,22,0.65);
+  }
+
+  .field textarea {
+    resize:vertical;
+    min-height:80px;
+  }
+
+  .field-inline {
+    display:flex;
+    gap:0.6rem;
+    margin-top:0.6rem;
+  }
+
+  .field-inline .field {
+    flex:1;
+    margin-top:0;
+  }
+
+  .checkbox-row {
+    margin-top:0.8rem;
+    display:flex;
+    gap:0.5rem;
+    align-items:flex-start;
+    font-size:0.78rem;
+    color:var(--muted);
+  }
+
+  .checkbox-row input {
+    margin-top:0.1rem;
+  }
+
+  .modal-footer {
+    margin-top:1rem;
+    display:flex;
+    gap:0.7rem;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+  }
+
+  .btn-modal {
+    border-radius:999px;
+    padding:0.65rem 1.2rem;
+    font-size:0.84rem;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:.18s;
+  }
+
+  .btn-secondary {
+    background:transparent;
+    border-color:var(--border);
+    color:#e5e7eb;
+  }
+
+  .btn-primary {
+    background:linear-gradient(135deg,#f97316,#facc15);
+    color:#111827;
+    font-weight:600;
+  }
+
+  .btn-secondary:hover {
+    border-color:#e5e7eb;
+  }
+
+  .btn-primary:hover {
+    box-shadow:0 0 22px rgba(249,115,22,0.6);
+  }
+
+  .hint {
+    margin-top:0.5rem;
+    font-size:0.74rem;
+    color:var(--muted);
+  }
+
   footer {
     text-align:center;
     padding:2rem;
@@ -266,6 +507,7 @@
 
   @media(max-width:780px){
     .nav-links{display:none;}
+    .bid-strip {align-items:flex-start;}
   }
 </style>
 </head>
@@ -297,123 +539,180 @@
 <div class="wrapper">
 
   <div class="label-top">Phase 1 · MPCCL</div>
-  <h1>Franchise <span>Cities</span></h1>
+  <h1>Franchise <span>Bid Lobby</span></h1>
   <p class="tagline">
-    For Season One, only the cities are locked. Franchise names, logos and identities
-    will be co-created with the first owners.
+    8 city slots. One base price. Limited bid window. Corporates and individual owners can submit
+    interest for their preferred city directly from this page.
   </p>
 
-  <div class="pill-row">
-    <div class="pill accent">8 City Slots</div>
-    <div class="pill">Corporate-first teams</div>
-    <div class="pill">Local club talent</div>
-    <div class="pill">Long-term franchise ecosystem</div>
+  <!-- BID STRIP -->
+  <div class="bid-strip">
+    <div class="bid-strip-main">
+      <div class="pill-live">Bidding window open</div>
+      <div>
+        Base Price per city: <strong>₹50,000</strong> (excl. taxes &amp; season fee)
+      </div>
+    </div>
+    <div class="bid-strip-meta">
+      <span>
+        <label>Bid closing</label>
+        <value>10 Jan</value>
+      </span>
+      <span>
+        <label>Franchise announcement</label>
+        <value>15 Jan</value>
+      </span>
+      <span>
+        <label>Seasons / year</label>
+        <value>Up to 2 (subject to schedule)</value>
+      </span>
+    </div>
   </div>
 
   <!-- CITY GRID -->
   <div class="city-grid">
-    <div class="city-card">
+    <!-- Bhopal -->
+    <div class="city-card highlight" data-city="Bhopal" data-slot="#01" data-bids="6">
       <div class="slot-badge">Slot #01</div>
       <div class="city-name">Bhopal</div>
       <div class="city-region">Central MP</div>
-      <div class="franchise-line">
-        Franchise name: <span>To be decided with owner</span>
+      <div class="price-line">
+        Base Price: <strong>₹50,000</strong> · Capital city &amp; primary broadcast hub.
       </div>
-      <div class="city-meta">
-        <span>Capital city · Core ICPL hub</span>
-        <span class="tag-soft">Corporate franchise</span>
+      <div class="fomo-row">
+        <span class="of">Bids received:</span>
+        <span class="bids">6</span>
       </div>
+      <div class="fomo-note">High interest · Ideal for large corporates / institutions.</div>
+      <button class="btn-bid" type="button">
+        <span class="icon">⬤</span> Place Bid For Bhopal
+      </button>
     </div>
 
-    <div class="city-card">
+    <!-- Indore -->
+    <div class="city-card highlight" data-city="Indore" data-slot="#02" data-bids="5">
       <div class="slot-badge">Slot #02</div>
       <div class="city-name">Indore</div>
       <div class="city-region">Malwa Region</div>
-      <div class="franchise-line">
-        Franchise name: <span>To be decided with owner</span>
+      <div class="price-line">
+        Base Price: <strong>₹50,000</strong> · Startup &amp; IT-heavy corporate base.
       </div>
-      <div class="city-meta">
-        <span>Corporate &amp; startup cluster</span>
-        <span class="tag-soft">Corporate franchise</span>
+      <div class="fomo-row">
+        <span class="of">Bids received:</span>
+        <span class="bids">5</span>
       </div>
+      <div class="fomo-note">Strong white-collar audience &amp; cricket culture.</div>
+      <button class="btn-bid" type="button">
+        <span class="icon">⬤</span> Place Bid For Indore
+      </button>
     </div>
 
-    <div class="city-card">
+    <!-- Gwalior -->
+    <div class="city-card" data-city="Gwalior" data-slot="#03" data-bids="4">
       <div class="slot-badge">Slot #03</div>
       <div class="city-name">Gwalior</div>
       <div class="city-region">North MP</div>
-      <div class="franchise-line">
-        Franchise name: <span>To be decided with owner</span>
+      <div class="price-line">
+        Base Price: <strong>₹50,000</strong> · Historic cricket centre with loyal fan pockets.
       </div>
-      <div class="city-meta">
-        <span>Historic sports culture belt</span>
-        <span class="tag-soft">Corporate franchise</span>
+      <div class="fomo-row">
+        <span class="of">Bids received:</span>
+        <span class="bids">4</span>
       </div>
+      <div class="fomo-note">Good slot for regional brands building recall.</div>
+      <button class="btn-bid" type="button">
+        <span class="icon">⬤</span> Place Bid For Gwalior
+      </button>
     </div>
 
-    <div class="city-card">
+    <!-- Jabalpur -->
+    <div class="city-card" data-city="Jabalpur" data-slot="#04" data-bids="3">
       <div class="slot-badge">Slot #04</div>
       <div class="city-name">Jabalpur</div>
       <div class="city-region">Mahakaushal</div>
-      <div class="franchise-line">
-        Franchise name: <span>To be decided with owner</span>
+      <div class="price-line">
+        Base Price: <strong>₹50,000</strong> · Strong local cricket &amp; student population.
       </div>
-      <div class="city-meta">
-        <span>Strong local cricket base</span>
-        <span class="tag-soft">Corporate franchise</span>
+      <div class="fomo-row">
+        <span class="of">Bids received:</span>
+        <span class="bids">3</span>
       </div>
+      <div class="fomo-note">Balanced mix of corporates &amp; youth talent.</div>
+      <button class="btn-bid" type="button">
+        <span class="icon">⬤</span> Place Bid For Jabalpur
+      </button>
     </div>
 
-    <div class="city-card">
+    <!-- Ujjain -->
+    <div class="city-card" data-city="Ujjain" data-slot="#05" data-bids="2">
       <div class="slot-badge">Slot #05</div>
       <div class="city-name">Ujjain</div>
       <div class="city-region">Malwa Belt</div>
-      <div class="franchise-line">
-        Franchise name: <span>To be decided with owner</span>
+      <div class="price-line">
+        Base Price: <strong>₹50,000</strong> · Emerging corporate &amp; tourism-led visibility.
       </div>
-      <div class="city-meta">
-        <span>Growing corporate presence</span>
-        <span class="tag-soft">Corporate franchise</span>
+      <div class="fomo-row">
+        <span class="of">Bids received:</span>
+        <span class="bids">2</span>
       </div>
+      <div class="fomo-note">Great for local businesses building city connect.</div>
+      <button class="btn-bid" type="button">
+        <span class="icon">⬤</span> Place Bid For Ujjain
+      </button>
     </div>
 
-    <div class="city-card">
+    <!-- Sagar -->
+    <div class="city-card" data-city="Sagar" data-slot="#06" data-bids="2">
       <div class="slot-badge">Slot #06</div>
       <div class="city-name">Sagar</div>
       <div class="city-region">Bundelkhand</div>
-      <div class="franchise-line">
-        Franchise name: <span>To be decided with owner</span>
+      <div class="price-line">
+        Base Price: <strong>₹50,000</strong> · Education hub with strong youth presence.
       </div>
-      <div class="city-meta">
-        <span>Regional business &amp; education hub</span>
-        <span class="tag-soft">Corporate franchise</span>
+      <div class="fomo-row">
+        <span class="of">Bids received:</span>
+        <span class="bids">2</span>
       </div>
+      <div class="fomo-note">Good entry point for early corporates.</div>
+      <button class="btn-bid" type="button">
+        <span class="icon">⬤</span> Place Bid For Sagar
+      </button>
     </div>
 
-    <div class="city-card">
+    <!-- Rewa -->
+    <div class="city-card" data-city="Rewa" data-slot="#07" data-bids="1">
       <div class="slot-badge">Slot #07</div>
       <div class="city-name">Rewa</div>
       <div class="city-region">Vindhya</div>
-      <div class="franchise-line">
-        Franchise name: <span>To be decided with owner</span>
+      <div class="price-line">
+        Base Price: <strong>₹50,000</strong> · Passionate cricket following in the belt.
       </div>
-      <div class="city-meta">
-        <span>Strong local cricket following</span>
-        <span class="tag-soft">Corporate franchise</span>
+      <div class="fomo-row">
+        <span class="of">Bids received:</span>
+        <span class="bids">1</span>
       </div>
+      <div class="fomo-note">Early mover advantage still open.</div>
+      <button class="btn-bid" type="button">
+        <span class="icon">⬤</span> Place Bid For Rewa
+      </button>
     </div>
 
-    <div class="city-card">
+    <!-- Satna -->
+    <div class="city-card" data-city="Satna" data-slot="#08" data-bids="1">
       <div class="slot-badge">Slot #08</div>
       <div class="city-name">Satna</div>
       <div class="city-region">Eastern MP</div>
-      <div class="franchise-line">
-        Franchise name: <span>To be decided with owner</span>
+      <div class="price-line">
+        Base Price: <strong>₹50,000</strong> · Industrial &amp; logistics touchpoint.
       </div>
-      <div class="city-meta">
-        <span>Industrial &amp; logistics link</span>
-        <span class="tag-soft">Corporate franchise</span>
+      <div class="fomo-row">
+        <span class="of">Bids received:</span>
+        <span class="bids">1</span>
       </div>
+      <div class="fomo-note">Ideal for manufacturing / logistics brands.</div>
+      <button class="btn-bid" type="button">
+        <span class="icon">⬤</span> Place Bid For Satna
+      </button>
     </div>
   </div>
 
@@ -425,26 +724,147 @@
           <th>Slot</th>
           <th>City</th>
           <th>Region</th>
+          <th>Bids</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>#01</td><td>Bhopal</td><td>Central MP</td></tr>
-        <tr><td>#02</td><td>Indore</td><td>Malwa</td></tr>
-        <tr><td>#03</td><td>Gwalior</td><td>North MP</td></tr>
-        <tr><td>#04</td><td>Jabalpur</td><td>Mahakaushal</td></tr>
-        <tr><td>#05</td><td>Ujjain</td><td>Malwa Belt</td></tr>
-        <tr><td>#06</td><td>Sagar</td><td>Bundelkhand</td></tr>
-        <tr><td>#07</td><td>Rewa</td><td>Vindhya</td></tr>
-        <tr><td>#08</td><td>Satna</td><td>Eastern MP</td></tr>
+        <tr><td>#01</td><td>Bhopal</td><td>Central MP</td><td>6</td><td>High interest</td></tr>
+        <tr><td>#02</td><td>Indore</td><td>Malwa</td><td>5</td><td>High interest</td></tr>
+        <tr><td>#03</td><td>Gwalior</td><td>North MP</td><td>4</td><td>Active</td></tr>
+        <tr><td>#04</td><td>Jabalpur</td><td>Mahakaushal</td><td>3</td><td>Active</td></tr>
+        <tr><td>#05</td><td>Ujjain</td><td>Malwa Belt</td><td>2</td><td>Open</td></tr>
+        <tr><td>#06</td><td>Sagar</td><td>Bundelkhand</td><td>2</td><td>Open</td></tr>
+        <tr><td>#07</td><td>Rewa</td><td>Vindhya</td><td>1</td><td>Open</td></tr>
+        <tr><td>#08</td><td>Satna</td><td>Eastern MP</td><td>1</td><td>Open</td></tr>
       </tbody>
     </table>
   </div>
 
 </div>
 
+<!-- MODAL -->
+<div class="modal-backdrop" id="bidModalBackdrop">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modalTitle">Place Bid For City</div>
+        <div class="modal-sub">Submit your franchise interest – the league team will contact you with next steps.</div>
+      </div>
+      <button class="modal-close" type="button" onclick="closeBidModal()">✕</button>
+    </div>
+
+    <div class="modal-chip" id="modalSlotChip">Slot</div>
+
+    <div class="modal-body">
+      <form id="bidForm" onsubmit="handleBidSubmit(event)">
+        <div class="field">
+          <label>City</label>
+          <input id="modalCity" name="city" type="text" readonly />
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label>Organisation / Brand</label>
+            <input name="org" type="text" placeholder="Company / individual name" required />
+          </div>
+          <div class="field">
+            <label>City of HQ</label>
+            <input name="hq" type="text" placeholder="Your base city" />
+          </div>
+        </div>
+
+        <div class="field-inline">
+          <div class="field">
+            <label>Contact Person</label>
+            <input name="contact" type="text" placeholder="Decision maker name" required />
+          </div>
+          <div class="field">
+            <label>Phone / Email</label>
+            <input name="contactDetails" type="text" placeholder="+91- / email" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Indicative Budget (per season)</label>
+          <select name="budget">
+            <option value="">Select range</option>
+            <option value="50-75k">₹50k – ₹75k</option>
+            <option value="75-100k">₹75k – ₹1L</option>
+            <option value="1-2L">₹1L – ₹2L</option>
+            <option value="2L+">₹2L+</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Anything we should know?</label>
+          <textarea name="note" placeholder="Eg. type of organisation, CSR interest, internal cricket culture, etc."></textarea>
+        </div>
+
+        <div class="checkbox-row">
+          <input id="agree" type="checkbox" required />
+          <label for="agree">I understand that the base price per city is <strong>₹50,000</strong> (exclusive of taxes and recurring season fees), and this form submits a bid interest – final allocation is at league discretion.</label>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-modal btn-secondary" onclick="closeBidModal()">Cancel</button>
+          <button type="submit" class="btn-modal btn-primary">Submit Bid Interest</button>
+        </div>
+
+        <div class="hint">
+          *For now this form is frontend-only. Once your backend or form service is ready, connect it to actually store bids
+          and update the “bids received” count.
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <footer>© <span id="year"></span> ICPLT20 · All Rights Reserved</footer>
+
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  const modalBackdrop = document.getElementById('bidModalBackdrop');
+  const modalCityInput = document.getElementById('modalCity');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalSlotChip = document.getElementById('modalSlotChip');
+
+  function openBidModal(city, slot) {
+    modalCityInput.value = city;
+    modalTitle.textContent = 'Place Bid For ' + city;
+    modalSlotChip.textContent = 'Slot ' + slot;
+    modalBackdrop.style.display = 'flex';
+  }
+
+  function closeBidModal() {
+    modalBackdrop.style.display = 'none';
+  }
+
+  // Attach to all bid buttons
+  document.querySelectorAll('.city-card .btn-bid').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const card = btn.closest('.city-card');
+      const city = card.getAttribute('data-city');
+      const slot = card.getAttribute('data-slot');
+      openBidModal(city, slot);
+    });
+  });
+
+  // Close on backdrop click
+  modalBackdrop.addEventListener('click', function(e){
+    if (e.target === modalBackdrop) {
+      closeBidModal();
+    }
+  });
+
+  function handleBidSubmit(e) {
+    e.preventDefault();
+    const city = modalCityInput.value;
+    alert('Bid interest submitted for ' + city + '.\nFor now this is a demo – please also email league@icplt20.in.');
+    closeBidModal();
+    // Here you can later send data to your backend / form service.
+  }
 </script>
 
 </body>
