@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Contact – ICPLT20</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+  /* paste EXACT same CSS as index.html */
+  .contact-box {
+    margin-top: 2.4rem;
+    border-radius: 20px;
+    border:1px solid var(--border);
+    background: rgba(15,23,42,0.9);
+    padding: 1.8rem 1.3rem;
+    text-align:left;
+  }
+  .contact-label {
+    font-size:0.8rem;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    color:var(--muted);
+  }
+  .contact-row {
+    margin-top:0.7rem;
+    font-size:0.95rem;
+    color:#e5e7eb;
+  }
+  .contact-row a {
+    color:#facc15;
+    text-decoration:none;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">ICPL<span>T20</span></div>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="auction.html">Auction</a>
+    <a href="teams.html">Teams</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+
+  <div class="social">
+    <!-- same social icons -->
+  </div>
+</nav>
+
+<div class="wrapper">
+  <h1>Contact <span>ICPLT20</span></h1>
+  <p class="tagline">
+    This is where franchises, sponsors and players can reach out.
+  </p>
+
+  <div class="contact-box">
+    <div class="contact-label">Primary Email</div>
+    <div class="contact-row">
+      <a href="mailto:league@icplt20.in">league@icplt20.in</a>
+    </div>
+
+    <div class="contact-label" style="margin-top:1.2rem;">WhatsApp (Enquiry)</div>
+    <div class="contact-row">
+      <a href="https://wa.me/910000000000" target="_blank">+91-00000-00000</a>
+      <span style="color:var(--muted);font-size:0.85rem;">&nbsp;• Placeholder, update later</span>
+    </div>
+
+    <div class="contact-label" style="margin-top:1.2rem;">Franchise / Sponsor Deck</div>
+    <div class="contact-row">
+      Coming soon – franchise brochure &amp; P&amp;L details for Phase 1 (MPCCL).
+    </div>
+  </div>
+</div>
+
+<footer>© <span id="year"></span> ICPLT20 · All Rights Reserved</footer>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
