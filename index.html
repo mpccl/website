@@ -57,9 +57,26 @@
     color: #e5e7eb;
     text-decoration: none;
     transition: .2s;
+    position: relative;
+    padding-bottom: 0.1rem;
   }
 
   .nav-links a:hover {color: var(--accent);}
+
+  .nav-links a.active {
+    color: var(--accent);
+  }
+
+  .nav-links a.active::after,
+  .nav-links a:hover::after {
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-2px;
+    height:1px;
+    width:100%;
+    background:linear-gradient(90deg,#f97316,#facc15);
+  }
 
   /* SOCIAL ICONS */
   .social {
@@ -210,10 +227,11 @@
   <div class="nav-left">ICPL<span>T20</span></div>
 
   <div class="nav-links">
-    <a href="#">About</a>
-    <a href="#">Auction</a>
-    <a href="#">Teams</a>
-    <a href="#">Contact</a>
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="auction.html">Auction</a>
+    <a href="teams.html">Teams</a>
+    <a href="contact.html">Contact</a>
   </div>
 
   <div class="social">
